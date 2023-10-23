@@ -22,15 +22,9 @@
     (die "Add an argument after calling" (-> *file*
                                              (str/split #"\\")
                                              last)))
-  (let [dir (io/file project-name)
-        paths-dir (->> (str/split project-ns #"\.")
-                       (reduce
-                         (fn [acc v]
-                           (conj acc
-                                 (str (last acc) "/" v))) []))]
+  (let [dir (io/file project-name)]
     (io/make-parents (io/file dir "src"))
-    (doseq [d paths-dir]
-      (fs/create-dirs (io/file dir (str "src" d))))
+    (fs/create-dirs (io/file dir (str "src/" (ns->path project-ns))))
     (doseq [src (->> (io/file "template")
                      (file-seq)
                      (filter #(.isFile %)))
