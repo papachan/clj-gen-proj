@@ -1,0 +1,10 @@
+{:src ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        metosin/reitit {:mvn/version "0.6.0"}
+        metosin/ring-http-response {:mvn/version "0.9.3"}
+        ring/ring-jetty-adapter {:mvn/version "1.10.0"}}
+ :aliases
+ {:run-m {:main-opts ["-m" "com.example.main"]}
+  :run-x {:ns-default com.example.main
+          :exec-fn function-called-from-command-line
+          :exec-args {:args1 "hello"}}}}
