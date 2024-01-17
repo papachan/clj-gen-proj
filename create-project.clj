@@ -1,4 +1,4 @@
-(ns something
+(ns create-project
   (:require
    [clojure.string :as str]
    [babashka.fs :as fs]
@@ -21,8 +21,8 @@
   (when (or (nil? template-name)
             (nil? project-ns))
     (die "Use two arguments after calling" (-> *file*
-                                                 (str/split #"\\")
-                                                 last)
+                                               (str/split #"\\")
+                                               last)
          "- eg: bb create-project.clj [template-type] [your-namespace]"))
   (when (not (contains? templates (str/lower-case template-name)))
     (die "Please use a valid template, here are the valid templates: " (apply str (interpose " or " (map #(str "`" % "`") templates)))))
