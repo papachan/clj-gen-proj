@@ -9,16 +9,16 @@
 
         :modules
         {:main
-         {:init-fn com.example.frontend.app/init}}
+         {:init-fn com.example.app/init}}
 
         :devtools
-        {:before-load  com.example.frontend.app/stop
+        {:before-load  com.example.app/stop
          :http-root    "resources/public"
          :http-port    3001
          :preloads     [day8.re-frame-10x.preload]}
 
         :dev
-        {:compiler-options {:main com.example.frontend.app
+        {:compiler-options {:main com.example.app
                             :infer-externs auto
                             :closure-defines {goog.DEBUG                          true
                                               re-frame.trace.trace-enabled?       true

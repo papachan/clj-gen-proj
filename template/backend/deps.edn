@@ -1,4 +1,4 @@
-{:src ["src"]
+{:src ["src" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.11.1"}
         mount/mount {:mvn/version "0.1.17"}
         aero/aero {:mvn/version "1.1.6"}
@@ -14,5 +14,5 @@
  :aliases
  {:run-m {:main-opts ["-m" "com.example.main"]}
   :run-x {:ns-default com.example.main
-          :exec-fn function-called-from-command-line
-          :exec-args {:args1 "hello"}}}}
+          :exec-fn    -dev-main
+          :exec-args  {}}}}}

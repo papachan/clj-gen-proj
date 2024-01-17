@@ -9,7 +9,8 @@
 (def templates #{"basic" "backend" "fullstack"})
 
 (def paths #{"generated/env/dev"
-             "generated/resources"})
+             "generated/resources"
+             "generated/resources/public/css"})
 
 (defn ns->path [s]
   (-> s
