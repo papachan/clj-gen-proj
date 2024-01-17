@@ -1,0 +1,29 @@
+{:deps {:aliases [:frontend :shadow-cljs]}
+
+ :nrepl {:port 8777}
+
+ :builds
+ {:app {:target     :browser
+        :output-dir "resources/public/js/compiled"
+        :asset-path "/js/compiled"
+
+        :modules
+        {:main
+         {:init-fn com.example.frontend.app/init}}
+
+        :devtools
+        {:before-load  com.example.frontend.app/stop
+         :http-root    "resources/public"
+         :http-port    3001
+         :preloads     [day8.re-frame-10x.preload]}
+
+        :dev
+        {:compiler-options {:main com.example.frontend.app
+                            :infer-externs auto
+                            :closure-defines {goog.DEBUG                          true
+                                              re-frame.trace.trace-enabled?       true
+                                              day8.reframe.tracing.trace-enabled? true}}}
+
+        :release
+        {:output-dir "resources/dist/js/compiled"
+         :compiler-options {:optimizations :advanced}}}}}

@@ -1,3 +1,4 @@
+#!/usr/bin/env bb
 (ns create-project
   (:require
    [clojure.string :as str]

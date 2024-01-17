@@ -1,1 +1,1 @@
-## Some project
+## Basic project
