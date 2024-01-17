@@ -8,6 +8,9 @@
 
 (def templates #{"basic" "backend" "fullstack"})
 
+(def paths #{"generated/env/dev"
+             "generated/resources"})
+
 (defn ns->path [s]
   (-> s
       (str/replace "-" "_")
@@ -31,7 +34,10 @@
         template-dir (str "template/" (str/lower-case template-name) "/")
         dir          (io/file project-name)]
     (io/make-parents (io/file dir "src"))
-    (fs/create-dirs (io/file dir (str "src/" (ns->path project-ns))))
+    (if (contains? #{"basic" "backend"} template-name)
+      (fs/create-dirs (io/file dir (str "src/" (ns->path project-ns))))
+      (doseq [path ["src/backend/" "src/frontend/"]]
+        (fs/create-dirs (io/file dir (str path (ns->path project-ns))))))
     (doseq [src (->> (io/file template-dir)
                      (file-seq)
                      (filter #(.isFile %)))
@@ -39,9 +45,10 @@
                                (str/replace #"\\" "/")
                                (str/replace-first (re-pattern (str ".*?" template-dir)) "")
                                (str/replace "com/example" (ns->path project-ns)))
-                  dest (io/file dir relative)]]
-      (when (str/includes? (str dest) "env/dev")
-        (fs/create-dirs (io/file dir "env/dev")))
+                  dest (io/file dir relative)
+                  path (.getPath (.getParentFile dest))]]
+      (when (contains? paths path)
+        (fs/create-dirs path))
       (spit dest
             (-> src
                 slurp
