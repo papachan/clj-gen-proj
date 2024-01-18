@@ -1,6 +1,7 @@
 (ns com.example.handler
   (:require
    [com.example.responses :refer [http-ok]]
+   [com.something.layout :refer [homepage]]
    [malli.util :as mu]
    [muuntaja.core :as m]
    [reitit.coercion.malli]
@@ -53,12 +54,12 @@
             :no-doc true
             :handler (fn [_req]
                        {:status 200
-                        :body (str (lt/homepage))})}]]
+                        :body (str (homepage))})}]]
       {::default-options-endpoint nil
        :exception pretty/exception
        :data {:coercion   (reitit.coercion.malli/create
                             { ;; set of keys to include in error messages
-                             :error-keys #{:type :coercion :in :schema :value :errors :humanized #_:transformed}
+                             :error-keys #{:type :coercion :in :schema :value :errors :humanized}
                              ;; support lite syntax
                              ;; :lite true
                              ;; schema identity function (default: close all map schemas)

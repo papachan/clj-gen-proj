@@ -42,18 +42,7 @@
            {:post {:summary "login"
                    :responses {200 {:body [:map [:message :string]]}}
                    :handler (fn [_req]
-                              (http-ok "ok"))}}]]]]
-
-       ["js/*" {:no-doc true
-                :handler (ring/create-resource-handler {:root "dist/js"})}]
-       ["css/*" {:no-doc true
-                 :handler (ring/create-resource-handler {:root "public/css"})}]
-
-       ["" {:headers {"Content-Type" "text/html"}
-            :no-doc true
-            :handler (fn [_req]
-                       {:status 200
-                        :body (str (lt/homepage))})}]]
+                              (http-ok "ok"))}}]]]]]
       {::default-options-endpoint nil
        :exception pretty/exception
        :data {:coercion   (reitit.coercion.malli/create
