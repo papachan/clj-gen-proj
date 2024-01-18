@@ -1,12 +1,25 @@
 {
-  "name": "fullstack",
-  "version": "1.0.0",
+  "name": "",
   "description": "",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deps": "yarn install",
+    "shadow:watch": "npx shadow-cljs watch app",
+    "shadow:production": "npx shadow-cljs release app;",
+    "tailwind:watch": "yarn tailwindcss -i ./tailwind.css -o ./resources/public/css/compiled.css --watch",
+    "tailwind:production": "yarn tailwindcss -i ./tailwind.css -o ./resources/public/css/compiled.css --minify",
+    "clean": "rm -rf resources/public/js; rm -rf target;"
   },
-  "keywords": [],
-  "author": "",
+  "devDependencies": {
+    "shadow-cljs": "2.26.3",
+    "tailwindcss": "^3.3.3"
+  },
+  "dependencies": {
+    "create-react-class": "^15.7.0",
+    "highlight.js": "11.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "license": "ISC"
 }
