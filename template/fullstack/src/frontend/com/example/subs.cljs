@@ -9,11 +9,6 @@
    (:data db)))
 
 (reg-sub
- ::is-authenticated
- (fn [db]
-   (:is-authenticated db)))
-
-(reg-sub
  ::current-route
  (fn [db]
    (:current-route db)))
