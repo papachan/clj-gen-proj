@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-if [ $# -ge 2 ]; then
-    echo "Usage: $0 [template]"
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 give an argument as [template]"
     exit 1
 fi
 
-if [ $# -ge 3 ]; then
-    echo "Usage: $0 [namespace]"
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 give an argument as [namespace]"
     exit 1
 fi
 
