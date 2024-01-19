@@ -10,6 +10,7 @@
 
 (def paths #{"generated/env/dev"
              "generated/resources"
+             "generated/resources/public"
              "generated/resources/public/css"})
 
 (defn ns->path [s]
