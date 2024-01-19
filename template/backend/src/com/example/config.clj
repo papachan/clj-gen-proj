@@ -9,9 +9,3 @@
 
 (defstate config
   :start (read-config))
-
-(defn database []
-  (get-in config [:app :database]))
-
-(defn random-org-key []
-  (get-in config [:app :api-key]))

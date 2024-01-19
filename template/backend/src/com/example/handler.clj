@@ -30,7 +30,7 @@
         {:get {:no-doc true
                :basePath "/"
                :openapi {:info {:title "com.example-api"
-                                :description "An Arithmetic Calculator Rest Api."
+                                :description ""
                                 :version "1.0.0"}}
                :handler (openapi/create-openapi-handler)}}]
 
