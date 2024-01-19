@@ -10,22 +10,20 @@
 (defn navigation
   []
   [:div
-   {:className "flex items-center justify-center min-h-screen bg-gray-100"}
+   {:className "px-32 py-6 mt-4 text-center bg-white"}
    [:div
-    {:className "px-32 py-6 mt-4 text-left bg-white"}
-    [:div
-     [:button
-      {:on-click #(re-frame/dispatch [::push-state ::webapp/home])}
-      "Go to home"]]
-    [:div
-     [:button
-      {:on-click #(re-frame/dispatch [::push-state ::webapp/subpage])}
-      "Go to sub page"]]]])
+    [:button
+     {:on-click #(re-frame/dispatch [::events/push-state ::webapp/home])}
+     "Go to home"]
+    [:button
+     {:on-click #(re-frame/dispatch [::events/push-state ::webapp/subpage])}
+     "Go to sub page"]]])
 
 (defn homepage
   []
   [:div
    {:className "flex items-center justify-center min-h-screen bg-gray-100"}
+   (navigation)
    [:div
     {:className "px-32 py-6 mt-4 text-left bg-white"}
     [:div
@@ -35,6 +33,7 @@
   []
   [:div
    {:className "flex items-center justify-center min-h-screen bg-gray-100"}
+   (navigation)
    [:div
     {:className "px-32 py-6 mt-4 text-left bg-white"}
     [:div

@@ -27,8 +27,9 @@
 
 (defn router-component [{:keys [router]}]
   (let [current-route @(re-frame/subscribe [::subs/current-route])]
-    (when current-route
-      [(-> current-route :data :view)])))
+    (if current-route
+      [(-> current-route :data :view)]
+      (re-frame/dispatch [::events/push-state ::webapp/home]))))
 
 ;;; Routes ;;;
 
@@ -66,8 +67,6 @@
   (.log js/console "start")
   (re-frame/clear-subscription-cache!)
   (re-frame/dispatch-sync [::events/initialize-db])
-  ;; start with view home:
-  ;; (re-frame/dispatch [::events/push-state ::webapp/home])
   (dev-setup)
   (init-routes!)
   (render))

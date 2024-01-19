@@ -12,4 +12,8 @@
    ["home"
     {:name ::webapp/home
      :view #'layout/homepage
+     :controllers []}]
+   ["subpage"
+    {:name ::webapp/subpage
+     :view #'layout/subpage
      :controllers []}]])
