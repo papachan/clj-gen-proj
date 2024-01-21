@@ -8,11 +8,6 @@
 
 (def templates #{"basic" "backend" "fullstack"})
 
-(def paths #{"generated/env/dev"
-             "generated/resources"
-             "generated/resources/public"
-             "generated/resources/public/css"})
-
 (defn ns->path [s]
   (-> s
       (str/replace "-" "_")
@@ -49,8 +44,7 @@
                                (str/replace "com/example" (ns->path project-ns)))
                   dest (io/file dir relative)
                   path (.getPath (.getParentFile dest))]]
-      (when (contains? paths path)
-        (fs/create-dirs path))
+      (fs/create-dirs path)
       (spit dest
             (-> src
                 slurp
