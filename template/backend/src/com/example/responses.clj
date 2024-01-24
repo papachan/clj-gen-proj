@@ -1,9 +1,6 @@
 (ns com.example.responses
   (:require
-   [clojure.data.json :as json]))
+   [ring.util.response :as resp]))
 
-(defn http-ok
-  [msg]
-  {:status 200
-   :headers {"Content-Type" "application/json"}
-   :body (json/write-str {:message msg})})
+(defn response [status-code msg]
+  (resp/status (resp/response msg) status-code))

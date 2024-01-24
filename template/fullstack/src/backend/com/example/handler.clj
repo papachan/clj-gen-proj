@@ -1,6 +1,6 @@
 (ns com.example.handler
   (:require
-   [com.example.responses :refer [http-ok]]
+   [com.example.responses :refer [response]]
    [com.something.layout :refer [homepage]]
    [malli.util :as mu]
    [muuntaja.core :as m]
@@ -31,8 +31,8 @@
         {:get {:no-doc true
                :basePath "/"
                :openapi {:info {:title "com.example-api"
-                                :description ""
-                                :version "1.0.0"}}
+                                :description "openapi3 docs with [malli](https://github.com/metosin/malli) and reitit-ring"
+                                :version "0.0.1"}}
                :handler (openapi/create-openapi-handler)}}]
 
        ["api"
@@ -43,7 +43,7 @@
            {:post {:summary "login"
                    :responses {200 {:body [:map [:message :string]]}}
                    :handler (fn [_req]
-                              (http-ok "ok"))}}]]]]
+                              (response 200 {:message :ok}))}}]]]]
 
        ["js/*" {:no-doc true
                 :handler (ring/create-resource-handler {:root "dist/js"})}]
@@ -92,7 +92,7 @@
          :config {:validatorUrl nil
                   :urls [{:name "swagger", :url "swagger.json"}
                          {:name "openapi", :url "openapi.json"}]
-                  :urls.primaryName "openapi"
+                  :urls.primaryName "swagger"
                   :operationsSorter "alpha"}})
       (ring/create-default-handler
         {:not-found (constantly {:status 404})}))

@@ -1,12 +1,13 @@
 (ns com.example.handler
   (:require
-   [com.example.responses :refer [http-ok]]
+   [com.example.responses :refer [response]]
    [malli.util :as mu]
    [muuntaja.core :as m]
    [reitit.coercion.malli]
    [reitit.dev.pretty :as pretty]
    [reitit.openapi :as openapi]
    [reitit.ring :as ring]
+   [ring.middleware.json :refer [wrap-json-body wrap-json-response]]
    [reitit.ring.coercion :as coercion]
    [reitit.ring.middleware.exception :as exception]
    [reitit.ring.middleware.muuntaja :as muuntaja]
@@ -30,8 +31,8 @@
         {:get {:no-doc true
                :basePath "/"
                :openapi {:info {:title "com.example-api"
-                                :description ""
-                                :version "1.0.0"}}
+                                :description "openapi3 docs with [malli](https://github.com/metosin/malli) and reitit-ring"
+                                :version "0.0.1"}}
                :handler (openapi/create-openapi-handler)}}]
 
        ["api"
@@ -42,7 +43,7 @@
            {:post {:summary "login"
                    :responses {200 {:body [:map [:message :string]]}}
                    :handler (fn [_req]
-                              (http-ok "ok"))}}]]]]]
+                              (response 200 {:message :ok}))}}]]]]]
       {::default-options-endpoint nil
        :exception pretty/exception
        :data {:coercion   (reitit.coercion.malli/create
@@ -72,7 +73,10 @@
                            exception/exception-middleware
                            ;; decoding request body
                            muuntaja/format-request-middleware
-                           coercion/coerce-request-middleware]}})
+                           coercion/coerce-request-middleware
+
+                           [wrap-json-body {:keywords? true}]
+                           wrap-json-response]}})
     (ring/routes
       (swagger-ui/create-swagger-ui-handler
         {:path "/api-docs"
@@ -80,7 +84,7 @@
          :config {:validatorUrl nil
                   :urls [{:name "swagger", :url "swagger.json"}
                          {:name "openapi", :url "openapi.json"}]
-                  :urls.primaryName "openapi"
+                  :urls.primaryName "swagger"
                   :operationsSorter "alpha"}})
       (ring/create-default-handler
         {:not-found (constantly {:status 404})}))
