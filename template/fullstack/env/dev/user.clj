@@ -8,8 +8,7 @@
             [clojure.pprint :refer (pprint)]
             [clojure.repl :refer (apropos dir doc find-doc pst source)]
             [clojure.test :as test]
-            [clojure.tools.namespace.repl :as tools-ns]
-            [clojure.tools.namespace.repl :as ctn]))
+            [clojure.tools.namespace.repl :as tools-ns]))
 
 
 (tools-ns/set-refresh-dirs "src")
@@ -20,4 +19,5 @@
 
 (comment
   (tools-ns/refresh-all)
+  ;; start server
   (tools-ns/refresh :after 'com.example.main/-main))
