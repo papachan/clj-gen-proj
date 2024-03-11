@@ -11,11 +11,15 @@
         ring/ring-json {:mvn/version "0.5.1"}
         ring-cors/ring-cors {:mvn/version "0.1.13"}
         metosin/malli {:mvn/version "0.14.0"}
-        hiccup/hiccup {:mvn/version "2.0.0-RC2"}}
+        hiccup/hiccup {:mvn/version "2.0.0-RC3"}}
 
  :aliases
  {:dev {:extra-paths ["env/dev"]
-        :extra-deps  {org.clojure/tools.namespace {:mvn/version "1.5.0"}}}
+        :jvm-opts    ["-XX:-OmitStackTraceInFastThrow"
+                      "-Dclojure.core.async.go-checking=true"
+                      "-Dclojure.main.report=stderr"]
+        :extra-deps  {org.clojure/tools.namespace {:mvn/version "1.5.0"}
+                      nrepl/nrepl {:mvn/version "1.1.1"}}}
   :run-m {:main-opts ["-m" "com.example.main"]}
   :run-x {:ns-default com.example.main
           :exec-fn    -dev-main
