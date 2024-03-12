@@ -3,9 +3,9 @@
    [re-frame.core :as re-frame]
    [goog.string :as gstring]
    [goog.string.format]
-   [com.something.events :as events]
-   [com.something.myapp :as webapp]
-   [com.something.subs :as subs]))
+   [com.example.events :as events]
+   [com.example.myapp :as webapp]
+   [com.example.subs :as subs]))
 
 (defn navigation
   []
@@ -14,10 +14,10 @@
    [:div
     [:button
      {:on-click #(re-frame/dispatch [::events/push-state ::webapp/home])}
-     "Go to home"]
+     "home"]
     [:button
      {:on-click #(re-frame/dispatch [::events/push-state ::webapp/subpage])}
-     "Go to sub page"]]])
+     "subpage 1"]]])
 
 (defn homepage
   []
@@ -27,7 +27,7 @@
    [:div
     {:className "px-32 py-6 mt-4 text-left bg-white"}
     [:div
-     "Something here"]]])
+     "home"]]])
 
 (defn subpage
   []
