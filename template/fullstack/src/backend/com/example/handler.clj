@@ -1,7 +1,7 @@
 (ns com.example.handler
   (:require
    [com.example.responses :refer [response]]
-   [com.something.layout :refer [homepage]]
+   [com.example.layout :refer [homepage]]
    [malli.util :as mu]
    [muuntaja.core :as m]
    [reitit.coercion.malli]
