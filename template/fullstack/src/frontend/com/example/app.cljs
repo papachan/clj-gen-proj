@@ -15,7 +15,6 @@
    [com.example.subs :as subs]
    [com.example.layout :as layout]))
 
-
 (defn dev-setup []
   (when debug?
     (enable-console-print!)
@@ -41,9 +40,9 @@
 (defn init-routes! []
   (.log js/console "initialization routes")
   (rfe/start!
-    router
-    on-navigate
-    {:use-fragment true}))
+   router
+   on-navigate
+   {:use-fragment true}))
 
 ;;; Setup ;;;
 (defonce root (createRoot (gdom/getElement "app")))

@@ -12,30 +12,29 @@
    [reitit.swagger-ui :as swagger-ui]
    [ring.middleware.json :refer [wrap-json-body wrap-json-response]]))
 
-
 (def app
   (ring/ring-handler
    (ring/router
     [["/swagger.json"
       {:get {:no-doc true
              :basePath "/"
-             :swagger {:info {:title "com.example-api"
+             :swagger {:info {:title "com.example"
                               :description "swagger docs with [malli](https://github.com/metosin/malli) and reitit-ring"
                               :version "0.0.1"}}
              :handler (swagger/create-swagger-handler)}}]
 
      ["/api"
-        ["/v1"
-         ["/users"
-          {:tags #{"users endpoints"}}
-          ["/login"
-           {:post {:summary "login"
-                   :responses {200 {:content {:default {:description "Success"
-                                                        :schema [:map [:success :boolean]]
-                                                        :example {:success true}}}}}
-                   :handler (fn [_req]
-                              {:status 200
-                               :body {:success true}})}}]]]]]
+      ["/v1"
+       ["/users"
+        {:tags #{"users endpoints"}}
+        ["/login"
+         {:post {:summary "login"
+                 :responses {200 {:content {:default {:description "Success"
+                                                      :schema [:map [:success :boolean]]
+                                                      :example {:success true}}}}}
+                 :handler (fn [_req]
+                            {:status 200
+                             :body {:success true}})}}]]]]]
 
     {:exception pretty/exception
      :data {:muuntaja m/instance
