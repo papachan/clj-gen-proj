@@ -26,7 +26,7 @@
                                                last)
          "- eg: bb create-project.clj [template-type] [your-namespace]"))
   (when (not (contains? templates (str/lower-case template-name)))
-    (die "Please use a valid template, here are the valid templates: " (apply str (interpose " or " (map #(str "`" % "`") templates)))))
+    (die "Please use a valid template, here are the valid templates:" (str/join " or " (map #(str "`" % "`") templates))))
   (let [project-name "generated"
         template-dir (str "template/" (str/lower-case template-name) "/")
         dir          (io/file project-name)]
