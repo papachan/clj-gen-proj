@@ -14,6 +14,6 @@
                       "-Dclojure.main.report=stderr"]
         :extra-deps  {org.clojure/tools.namespace {:mvn/version "1.5.0"}}}
   :run-m {:main-opts ["-m" "com.example.main"]}
-  :run-x {:ns-default com.example.main
-          :exec-fn    -dev-main
-          :exec-args  {}}}}
+  :start-server {:ns-default com.example.main
+                 :exec-fn    -dev-main
+                 :exec-args  {}}}}
