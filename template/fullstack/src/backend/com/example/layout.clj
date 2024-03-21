@@ -14,6 +14,6 @@
              :content "width=device-width, initial-scale=1"}]
      (hp/include-css "/css/compiled.css")
      [:body
-      {:class "bg-white"}
+      ;; {:class "bg-white"}
       [:div {:id "app"}]
       (hp/include-js "/js/compiled/main.js")]])))
