@@ -15,11 +15,6 @@
    [com.example.subs :as subs]
    [com.example.layout :as layout]))
 
-(defn dev-setup []
-  (when debug?
-    (enable-console-print!)
-    (println "dev mode")))
-
 (defn on-navigate [new-match]
   (when new-match
     (re-frame/dispatch [::events/navigated new-match])))
@@ -63,9 +58,8 @@
   ;; init is called ONCE when the page loads
   ;; this is called in the index.html and must be exported
   ;; so it is available even in :advanced release builds
-  (.log js/console "start")
+  ;; (.log js/console "start")
   (re-frame/clear-subscription-cache!)
   (re-frame/dispatch-sync [::events/initialize-db])
-  (dev-setup)
   (init-routes!)
   (render))
