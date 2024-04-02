@@ -1,3 +1,4 @@
+.DS_Store
 .calva/output-window/
 .classpath
 !.clj-kondo/config.edn
@@ -21,15 +22,12 @@
 .sw*
 .vscode
 *.class
+*.iml
 *.jar
+*.log
 *.swp
 *~
 \#*\#
 /checkouts
 /classes
 /target
-resources/public/css/compiled.css
-resources/public/js
-resources/dist
-node_modules/
-.shadow-cljs
