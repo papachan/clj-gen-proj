@@ -13,7 +13,5 @@
         {:main
          {:init-fn com.example.app/init}}
 
-        :devtools {:before-load  com.example.app/stop
-                   :http-root "public"
-                   :http-port 3001
+        :devtools {:before-load com.example.app/stop
                    :preloads [devtools.preload]}}}}
