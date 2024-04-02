@@ -1,0 +1,7 @@
+{:deps    {org.clojure/clojure       {:mvn/version "1.11.2"}
+           org.clojure/clojurescript {:mvn/version "1.11.132"}
+           binaryage/devtools        {:mvn/version "1.0.7"}
+           thheller/shadow-cljs      {:mvn/version "2.28.3"}
+           reagent/reagent           {:mvn/version "1.2.0"}}
+ :paths   ["src"]
+ :aliases {:dev {:main-opts ["-m" "shadow.cljs.devtools.cli" "watch" ":app"]}}}

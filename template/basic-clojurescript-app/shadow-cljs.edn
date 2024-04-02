@@ -1,0 +1,19 @@
+{:deps {:aliases [:dev]}
+
+ :dev-http {8080 "public"}
+
+ :nrepl {:port 8777}
+
+ :builds
+ {:app {:target     :browser
+        :output-dir "public/js/compiled"
+        :asset-path "/js/compiled"
+
+        :modules
+        {:main
+         {:init-fn com.example.app/init}}
+
+        :devtools {:before-load  com.example.app/stop
+                   :http-root "public"
+                   :http-port 3001
+                   :preloads [devtools.preload]}}}}
