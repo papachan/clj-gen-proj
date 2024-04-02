@@ -6,7 +6,12 @@
    [clojure.java.shell :as shell]
    [clojure.java.io :as io]))
 
-(def templates #{"basic" "backend" "fullstack"})
+
+(def templates
+  (into #{} (map #(-> (str %)
+                      (str/split #"/")
+                      second)
+                 (fs/list-dir (fs/file "template")))))
 
 (defn ns->path [s]
   (-> s
