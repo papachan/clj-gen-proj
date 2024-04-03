@@ -8,10 +8,12 @@
 
 
 (def templates
-  (into #{} (map #(-> (str %)
-                      (str/split #"/")
-                      second)
-                 (fs/list-dir (fs/file "template")))))
+  (->> (fs/file "template")
+       (fs/list-dir)
+       (map #(-> (str %)
+                 (str/split #"/|\\")
+                 second))
+       (into #{})))
 
 (defn ns->path [s]
   (-> s
