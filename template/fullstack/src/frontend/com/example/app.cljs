@@ -2,7 +2,6 @@
   (:require
    ["react-dom/client" :refer [createRoot]]
    [day8.re-frame.http-fx]
-   [goog.dom :as gdom]
    [re-frame.core :as re-frame]
    [reagent.core :as r]
    [reitit.coercion.spec :as rss]
@@ -40,12 +39,15 @@
    {:use-fragment true}))
 
 ;;; Setup ;;;
-(defonce root (createRoot (gdom/getElement "app")))
+(defonce root (createRoot (js/document.getElementById "app")))
 
 (defn render []
   (.render root (r/as-element [router-component {:router router}])))
 
 (defn ^:dev/after-load re-render []
+  ;; The `:dev/after-load` metadata causes this function to be called
+  ;; after shadow-cljs hot-reloads code.
+  ;; This function is called implicitly by its annotation.
   (re-frame/clear-subscription-cache!)
   (render))
 

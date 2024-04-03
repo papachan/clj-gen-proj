@@ -1,6 +1,10 @@
 (ns com.example.app
   (:require
-   [reagent.dom :as rdom]))
+   [reagent.dom :as rdom]
+   ["react-dom/client" :refer [createRoot]]
+   [reagent.core :as r]))
+
+(defonce root (createRoot (js/document.getElementById "app")))
 
 (defn my-component []
   [:div
@@ -10,8 +14,7 @@
     [:span {:style {:color "red"}} " and red "] "text."]])
 
 (defn render []
-  (rdom/render [my-component]
-               (js/document.getElementById "app")))
+  (.render root (r/as-element [my-component])))
 
 (defn stop []
   ;; stop is called before any code is reloaded
@@ -19,9 +22,12 @@
   (.log js/console "stop"))
 
 (defn ^:dev/after-load re-render []
-  (js/console.log "reload")
+  ;; The `:dev/after-load` metadata causes this function to be called
+  ;; after shadow-cljs hot-reloads code.
+  ;; This function is called implicitly by its annotation.
+  (.log js/console "reload")
   (render))
 
 (defn ^:export init []
-  (js/console.log "start")
+  (.log js/console "start")
   (render))

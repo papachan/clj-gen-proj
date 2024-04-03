@@ -15,8 +15,6 @@
 
         :devtools
         {:before-load  com.example.app/stop
-         :http-root    "resources/public"
-         :http-port    3001
          :preloads     [day8.re-frame-10x.preload]}
 
         :dev
