@@ -1,4 +1,4 @@
-{:deps {:aliases [:dev]}
+{:deps {:aliases [:frontend]}
 
  :dev-http {8080 "public"}
 
@@ -14,4 +14,4 @@
          {:init-fn com.example.app/init}}
 
         :devtools {:before-load com.example.app/stop
-                   :preloads [devtools.preload]}}}}
+                   :preloads    [devtools.preload]}}}}

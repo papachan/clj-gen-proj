@@ -1,8 +1,5 @@
 (ns com.example.app
   (:require
-   ["react-dom/client" :refer [createRoot]]
-   [goog.dom :as gdom]
-   [reagent.core :as r]
    [reagent.dom :as rdom]))
 
 (defn my-component []
