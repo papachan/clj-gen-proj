@@ -10,10 +10,12 @@
   [:div
    {:className "d-flex align-items-center justify-content-center vh-100"}
    [:div
+    {:className "text-center"}
     [:p "I am a component!!!!"]
     [:p.someclass
      "I have " [:strong "bold"]
-     [:span {:style {:color "red"}} " and red "] "text."]]])
+     [:span
+      {:style {:color "red"}} " and red "] "text."]]])
 
 (defn render []
   (.render root (r/as-element [my-component])))
