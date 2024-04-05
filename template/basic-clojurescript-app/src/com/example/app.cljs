@@ -8,10 +8,12 @@
 
 (defn my-component []
   [:div
-   [:p "I am a component!"]
-   [:p.someclass
-    "I have " [:strong "bold"]
-    [:span {:style {:color "red"}} " and red "] "text."]])
+   {:className "d-flex align-items-center justify-content-center vh-100"}
+   [:div
+    [:p "I am a component!!!!"]
+    [:p.someclass
+     "I have " [:strong "bold"]
+     [:span {:style {:color "red"}} " and red "] "text."]]])
 
 (defn render []
   (.render root (r/as-element [my-component])))
