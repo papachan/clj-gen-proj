@@ -4,7 +4,7 @@
    [day8.re-frame.http-fx]
    [re-frame.core :as re-frame]
    [reagent.core :as r]
-   [reitit.coercion.spec :as rss]
+   [reitit.coercion.malli :as rsm]
    [reitit.frontend :as rf]
    [reitit.frontend.easy :as rfe]
    [com.example.debug :refer [debug?]]
@@ -29,13 +29,14 @@
 (def router
   (rf/router
    myroutes/routes
-   {:data {:coercion rss/coercion}}))
+   {:data {:coercion rsm/coercion}}))
 
 (defn init-routes! []
   (.log js/console "initialization routes")
   (rfe/start!
    router
    on-navigate
+   ;; set to false to enable HistoryAPI
    {:use-fragment true}))
 
 ;;; Setup ;;;
