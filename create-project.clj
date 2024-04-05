@@ -38,10 +38,10 @@
         template-dir (str "template/" (str/lower-case template-name) "/")
         dir          (io/file project-name)]
     (io/make-parents (io/file dir "src"))
-    (if (contains? #{"basic" "backend"} template-name)
-      (fs/create-dirs (io/file dir (str "src/" (ns->path project-ns))))
+    (if (contains? #{"fullstack"} template-name)
       (doseq [path ["src/backend/" "src/frontend/"]]
-        (fs/create-dirs (io/file dir (str path (ns->path project-ns))))))
+        (fs/create-dirs (io/file dir (str path (ns->path project-ns)))))
+      (fs/create-dirs (io/file dir (str "src/" (ns->path project-ns)))))
     (doseq [src (->> (io/file template-dir)
                      (file-seq)
                      (filter #(.isFile %)))
