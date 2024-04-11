@@ -1,6 +1,5 @@
 (ns com.example.app
   (:require
-   [reagent.dom :as rdom]
    ["react-dom/client" :refer [createRoot]]
    [reagent.core :as r]))
 
