@@ -1,4 +1,5 @@
-(ns com.example.app)
+(ns com.example.app
+  (:gen-class))
 
 (defn function-called-from-command-line
   [data]
