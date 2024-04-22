@@ -4,4 +4,4 @@
  {:run-m {:main-opts ["-m" "com.example.app"]}
   :run-x {:ns-default com.example.app
           :exec-fn function-called-from-command-line
-          :exec-args {:args1 "hello"}}}}
+          :exec-args {:name "hello"}}}}

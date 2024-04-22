@@ -3,7 +3,7 @@
 
 (defn function-called-from-command-line
   [data]
-  (println (str (:args1 data) "!")))
+  (println (:name data) "clojure!"))
 
 (defn -main [& args]
   (println "something"))
