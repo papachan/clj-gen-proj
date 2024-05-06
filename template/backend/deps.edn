@@ -4,9 +4,9 @@
         aero/aero {:mvn/version "1.1.6"}
         metosin/reitit {:mvn/version "0.7.0"}
         org.slf4j/slf4j-nop {:mvn/version "2.0.9"}
-        ring/ring-devel {:mvn/version "1.12.0"}
+        ring/ring-devel {:mvn/version "1.12.1"}
         ring/ring-json {:mvn/version "0.5.1"}
-        ring/ring-jetty-adapter {:mvn/version "1.12.0"}}
+        ring/ring-jetty-adapter {:mvn/version "1.12.1"}}
  :aliases
  {:dev {:extra-paths ["env/dev"]
         :jvm-opts    ["-XX:-OmitStackTraceInFastThrow"
