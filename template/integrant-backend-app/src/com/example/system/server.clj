@@ -17,12 +17,12 @@
        (reload!)
        ((f) request respond raise)))))
 
-(defmethod ig/init-key :ring/jetty [_ {:keys [port join? dev-mode?]}]
-  (let [create-handler-fn (fn [] #'app)
-        handler (if dev-mode?
-                  (reloading-ring-handler create-handler-fn)
-                  (create-handler-fn))]
-    (ring-jetty/run-jetty handler {:port port, :join? join?})))
+(defmethod ig/init-key :ring/jetty [_ {:keys [dev-mode?] :as opts}]
+  (let [handler (when dev-mode?
+                  (reloading-ring-handler (fn [] #'app)))]
+    (ring-jetty/run-jetty (if dev-mode?
+                            handler
+                            app) (dissoc opts :dev-mode?))))
 
 (defmethod ig/halt-key! :ring/jetty [_ server]
   (.stop server))

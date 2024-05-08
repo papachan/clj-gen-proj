@@ -6,10 +6,10 @@
 (defn -dev-main
   [& _]
   (println "dev mode")
-  (println "server running in port 3000")
+  (println "server running in port" (get-in config [:ring/jetty :port]))
   (sys/start (update-in config [:ring/jetty :dev-mode?] not)))
 
 (defn -main
   [& _]
-  (println "server running in port 3000")
+  (println "server running in port" (get-in config [:ring/jetty :port]))
   (sys/start config))
