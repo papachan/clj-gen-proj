@@ -1,19 +1,20 @@
-{:paths ["src" "resources"]
+{:paths ["src"]
  :deps {org.clojure/clojure {:mvn/version "1.11.3"}
-        mount/mount {:mvn/version "0.1.18"}
-        aero/aero {:mvn/version "1.1.6"}
+        org.clojure/data.json {:mvn/version "2.5.0"}
         metosin/reitit {:mvn/version "0.7.0"}
+        metosin/reitit-interceptors {:mvn/version "0.7.0"}
+        metosin/reitit-sieppari {:mvn/version "0.7.0"}
+        metosin/reitit-malli {:mvn/version "0.7.0"}
         org.slf4j/slf4j-nop {:mvn/version "2.0.9"}
         ring/ring-devel {:mvn/version "1.12.1"}
         ring/ring-json {:mvn/version "0.5.1"}
-        ring/ring-jetty-adapter {:mvn/version "1.12.1"}}
+        ring/ring-jetty-adapter {:mvn/version "1.12.1"}
+        org.clojars.lispyclouds/navi {:mvn/version "0.0.5"}
+        integrant/integrant {:mvn/version "0.9.0"}}
  :aliases
  {:dev {:extra-paths ["env/dev"]
-        :jvm-opts    ["-XX:-OmitStackTraceInFastThrow"
-                      "-Dclojure.core.async.go-checking=true"
-                      "-Dclojure.main.report=stderr"]
         :extra-deps  {org.clojure/tools.namespace {:mvn/version "1.5.0"}}}
   :run-m {:main-opts ["-m" "com.example.main"]}
   :start-server {:ns-default com.example.main
                  :exec-fn    -dev-main
-                 :exec-args  {}}}}
+                 :exec-args  {:dev-mode? true}}}}

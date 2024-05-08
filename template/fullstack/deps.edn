@@ -2,7 +2,7 @@
  :deps {org.clojure/clojure {:mvn/version "1.11.3"}
         mount/mount {:mvn/version "0.1.18"}
         aero/aero {:mvn/version "1.1.6"}
-        metosin/reitit {:mvn/version "0.7.0-alpha7"}
+        metosin/reitit {:mvn/version "0.7.0"}
         metosin/ring-swagger-ui {:mvn/version "4.19.1"}
         metosin/ring-http-response {:mvn/version "0.9.3"}
         org.slf4j/slf4j-nop {:mvn/version "2.0.9"}
@@ -10,7 +10,7 @@
         ring/ring-jetty-adapter {:mvn/version "1.12.1"}
         ring/ring-json {:mvn/version "0.5.1"}
         ring-cors/ring-cors {:mvn/version "0.1.13"}
-        metosin/malli {:mvn/version "0.16.0"}
+        metosin/malli {:mvn/version "0.16.1"}
         hiccup/hiccup {:mvn/version "2.0.0-RC3"}}
 
  :aliases
@@ -34,7 +34,7 @@
 
   :shadow-cljs
   {:extra-deps
-   {thheller/shadow-cljs {:mvn/version "2.28.4"}
+   {thheller/shadow-cljs {:mvn/version "2.28.5"}
     day8.re-frame/tracing {:mvn/version "0.6.2"}
     binaryage/devtools {:mvn/version "1.0.7"}
     day8.re-frame/re-frame-10x {:mvn/version "1.9.9"}}}

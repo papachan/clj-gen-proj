@@ -2,7 +2,7 @@
  :deps  {org.clojure/clojure       {:mvn/version "1.11.3"}
          org.clojure/clojurescript {:mvn/version "1.11.132"}
          binaryage/devtools        {:mvn/version "1.0.7"}
-         thheller/shadow-cljs      {:mvn/version "2.28.4"}
+         thheller/shadow-cljs      {:mvn/version "2.28.5"}
          reagent/reagent           {:mvn/version "1.2.0"}}
 
  :aliases {:frontend {:main-opts ["-m" "shadow.cljs.devtools.cli" "watch" ":app"]}}}

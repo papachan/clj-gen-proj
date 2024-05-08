@@ -6,6 +6,7 @@ This babashka script parse any template from template directory, after cloning t
 - Basic backend project ( api with swagger ) choose `Backend` project.
 - A complete fullstack project ( clojure files and clojurescript files at the same level ) choose `Fullstack`.
 - A dummy clojurescript app choose `basic-clojurescript-app`.
+- A dummy project using integrant choose `integrant-app`.
 
 You can just run the script by using:
 
