@@ -9,7 +9,6 @@
         ring/ring-devel {:mvn/version "1.12.1"}
         ring/ring-json {:mvn/version "0.5.1"}
         ring/ring-jetty-adapter {:mvn/version "1.12.1"}
-        org.clojars.lispyclouds/navi {:mvn/version "0.0.5"}
         integrant/integrant {:mvn/version "0.9.0"}}
  :aliases
  {:dev {:extra-paths ["env/dev"]
