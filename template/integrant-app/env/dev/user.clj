@@ -8,16 +8,36 @@
             [clojure.pprint :refer (pprint)]
             [clojure.repl :refer (apropos dir doc find-doc pst source)]
             [clojure.test :as test]
-            [clojure.tools.namespace.repl :as tools-ns]))
+            [clojure.tools.namespace.repl :as tools-ns]
+            [integrant.core :as ig]
+            [integrant.repl :as ig-repl]
+            [com.something.system :as system-util]))
 
 
 (tools-ns/set-refresh-dirs "src")
 
-(defn reset
+(defn- integrant-prep!
   []
-  (tools-ns/refresh))
+  (ig-repl/set-prep! #(ig/prep system-util/config))
+  (ig-repl/prep))
+
+(defn reset
+  "Restart system."
+  []
+  (ig-repl/reset))
+
+(defn stop
+  "Stop system."
+  []
+  (ig-repl/halt))
+
+(defn start
+  []
+  (integrant-prep!)
+  (ig-repl/init)
+  (ig-repl/go))
 
 (comment
   (tools-ns/refresh-all)
-  ;; start server
-  (tools-ns/refresh :after 'com.example.main/-main))
+
+  ,)
