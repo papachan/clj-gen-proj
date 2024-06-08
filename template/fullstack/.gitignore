@@ -31,6 +31,8 @@
 /checkouts
 /classes
 /target
-resources/public/js
+resources/public/css/compiled.css
+resources/public/js/compiled
+resources/dist/js/compiled
 node_modules/
 .shadow-cljs
