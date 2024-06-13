@@ -1,7 +1,7 @@
 (ns com.example.handler
   (:require
    [com.example.responses :refer [response]]
-   [com.example.layout :refer [homepage]]
+   [com.example.layout :as layout]
    [malli.util :as mu]
    [muuntaja.core :as m]
    [reitit.coercion.malli]
@@ -14,7 +14,8 @@
    [reitit.ring.middleware.parameters :as parameters]
    [reitit.swagger :as swagger]
    [reitit.swagger-ui :as swagger-ui]
-   [ring.middleware.cors :refer [wrap-cors]]))
+   [ring.middleware.cors :refer [wrap-cors]]
+   [ring.util.response :as resp]))
 
 (def app
   (ring/ring-handler
@@ -36,9 +37,7 @@
 
      ["/" {:headers {"Content-Type" "text/html"}
            :no-doc true
-           :handler (fn [_req]
-                      {:status 200
-                       :body (str (homepage))})}]
+           :handler (constantly (resp/response (layout/index-page)))}]
      ["/api"
       ["/v1"
        ["/users"

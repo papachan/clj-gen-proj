@@ -3,7 +3,7 @@
    [hiccup
     [page :refer [html5 include-js include-css]]]))
 
-(defn homepage []
+(defn index-page []
   (html5
     [:head
      [:meta {:charset "UTF-8"}]
