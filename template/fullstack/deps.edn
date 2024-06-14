@@ -25,8 +25,8 @@
   {:extra-paths ["src/frontend"]
    :extra-deps
    {reagent/reagent {:mvn/version "1.2.0"}
-    metosin/reitit-frontend {:mvn/version "0.7.0-alpha7"}
-    metosin/reitit-malli {:mvn/version "0.7.0-alpha7"}
+    metosin/reitit-frontend {:mvn/version "0.7.0"}
+    metosin/reitit-malli {:mvn/version "0.7.0"}
     re-frame/re-frame {:mvn/version "1.4.3"}
     day8.re-frame/http-fx {:mvn/version "0.2.4"}}}
 
