@@ -14,36 +14,17 @@
    [com.example.subs :as subs]
    [com.example.layout :as layout]))
 
-(defn on-navigate [new-match]
-  (when new-match
-    (re-frame/dispatch [::events/navigated new-match])))
-
 (defn router-component [{:keys [router]}]
   (let [current-route @(re-frame/subscribe [::subs/current-route])]
     (if current-route
       [(-> current-route :data :view)]
       (re-frame/dispatch [::events/push-state ::webapp/home]))))
 
-;;; Routes ;;;
-
-(def router
-  (rf/router
-   myroutes/routes
-   {:data {:coercion rsm/coercion}}))
-
-(defn init-routes! []
-  (.log js/console "initialization routes")
-  (rfe/start!
-   router
-   on-navigate
-   ;; set to false to enable HistoryAPI
-   {:use-fragment true}))
-
 ;;; Setup ;;;
-(defonce root (createRoot (js/document.getElementById "app")))
+(defonce ^:private root (createRoot (js/document.getElementById "app")))
 
 (defn render []
-  (.render root (r/as-element [router-component {:router router}])))
+  (.render root (r/as-element [router-component {:router myroutes/router}])))
 
 (defn ^:dev/after-load re-render []
   ;; The `:dev/after-load` metadata causes this function to be called
@@ -64,5 +45,5 @@
   ;; (.log js/console "start")
   (re-frame/clear-subscription-cache!)
   (re-frame/dispatch-sync [::events/initialize-db])
-  (init-routes!)
+  (myroutes/init-routes!)
   (render))
