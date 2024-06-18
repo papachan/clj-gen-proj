@@ -16,14 +16,14 @@
      {:className "flex justify-around"}
      [:li
       [:a
-       {:href     "#"
-        :on-click #(re-frame/dispatch [::events/push-state {:route ::webapp/home}])
+       {:href      "#"
+        :on-click  #(re-frame/dispatch [::events/push-state {:route ::webapp/home}])
         :className "hover:text-gray-300"}
        "home"]]
      [:li
       [:a
-       {:href     "#"
-        :on-click #(re-frame/dispatch [::events/push-state {:route ::webapp/subpage}])
+       {:href      "#"
+        :on-click  #(re-frame/dispatch [::events/push-state {:route ::webapp/subpage}])
         :className "hover:text-gray-300"}
        "subpage 1"]]]]])
 
@@ -40,7 +40,7 @@
       name]
      [:p
       {:className "text-gray-700"}
-      "Loremp ipsum"]]]])
+      "Lorem ipsum"]]]])
 
 (defn homepage
   []
