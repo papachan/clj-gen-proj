@@ -8,19 +8,19 @@
    [reitit.frontend.easy :as rfe]
    [com.example.db :refer [app-db]]
    [com.example.debug :refer [debug?]]
-   [com.example.myapp :as webapp]))
+   [com.example.myapp]))
 
 (re-frame/reg-event-db
  ::initialize-db
- (fn [db _]
+ (fn [_ _]
    app-db))
 
 ;; navigation
 
 (re-frame/reg-fx
  :push-state
- (fn [route]
-   (apply rfe/push-state route)))
+ (fn [{:keys [route]}]
+   (rfe/push-state route)))
 
 (re-frame/reg-event-fx
  ::push-state
@@ -28,8 +28,10 @@
    {:push-state route}))
 
 (re-frame/reg-event-db
- ::navigated
- (fn [db [_ new-match]]
-   (let [old-match   (:current-route db)
-         controllers (rfc/apply-controllers (:controllers old-match) new-match)]
-     (assoc db :current-route (assoc new-match :controllers controllers)))))
+  ::navigate
+  (fn [{:keys [current-route] :as db} [_ new-route]]
+    (let [old-controllers (:controllers current-route)
+          new-route* (assoc new-route :controllers (rfc/apply-controllers
+                                                     old-controllers
+                                                     new-route))]
+      (assoc db :current-route new-route*))))

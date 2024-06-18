@@ -1,6 +1,7 @@
-(ns com.example.db)
+(ns com.example.db
+  (:require [com.example.myapp]))
 
 (def app-db
-  {:data {}
-   :push-state nil
+  "Main state for the app"
+  {:push-state    nil
    :current-route nil})
