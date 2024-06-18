@@ -9,22 +9,23 @@
    [reitit.frontend.easy :as rfe]
    [com.example.debug :refer [debug?]]
    [com.example.events :as events]
-   [com.example.myapp :as webapp]
-   [com.example.routes :as myroutes]
+   [com.example.myapp]
+   [com.example.routes :as routes]
    [com.example.subs :as subs]
-   [com.example.layout :as layout]))
+   [com.example.views :as views]))
 
 (defn router-component [{:keys [router]}]
-  (let [current-route @(re-frame/subscribe [::subs/current-route])]
-    (if current-route
-      [(-> current-route :data :view)]
-      (re-frame/dispatch [::events/push-state ::webapp/home]))))
+  (let [current-route @(re-frame/subscribe [::subs/current-route])
+        view (-> current-route :data :view)]
+    (when view
+      [view {:router        routes/router
+             :current-route current-route}])))
 
 ;;; Setup ;;;
 (defonce ^:private root (createRoot (js/document.getElementById "app")))
 
 (defn render []
-  (.render root (r/as-element [router-component {:router myroutes/router}])))
+  (.render root (r/as-element [router-component {:router routes/router}])))
 
 (defn ^:dev/after-load re-render []
   ;; The `:dev/after-load` metadata causes this function to be called
@@ -45,5 +46,5 @@
   ;; (.log js/console "start")
   (re-frame/clear-subscription-cache!)
   (re-frame/dispatch-sync [::events/initialize-db])
-  (myroutes/init-routes!)
+  (routes/init-routes!)
   (render))

@@ -1,11 +1,10 @@
-(ns com.example.layout
+(ns com.example.views
   (:require
    [re-frame.core :as re-frame]
-   [goog.string :as gstring]
-   [goog.string.format]
    [com.example.events :as events]
    [com.example.myapp :as webapp]
-   [com.example.subs :as subs]))
+   [com.example.subs]))
+
 
 (defn navigation
   []
@@ -13,10 +12,10 @@
    {:className "px-32 py-6 mt-4 text-center bg-white"}
    [:div
     [:button
-     {:on-click #(re-frame/dispatch [::events/push-state ::webapp/home])}
+     {:on-click #(re-frame/dispatch [::events/push-state {:route ::webapp/home}])}
      "home"]
     [:button
-     {:on-click #(re-frame/dispatch [::events/push-state ::webapp/subpage])}
+     {:on-click #(re-frame/dispatch [::events/push-state {:route ::webapp/subpage}])}
      "subpage 1"]]])
 
 (defn homepage
