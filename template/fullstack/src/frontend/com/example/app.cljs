@@ -11,8 +11,7 @@
    [com.example.events :as events]
    [com.example.myapp]
    [com.example.routes :as routes]
-   [com.example.subs :as subs]
-   [com.example.views :as views]))
+   [com.example.subs :as subs]))
 
 (defn router-component [{:keys [router]}]
   (let [current-route @(re-frame/subscribe [::subs/current-route])
@@ -43,7 +42,6 @@
   ;; init is called ONCE when the page loads
   ;; this is called in the index.html and must be exported
   ;; so it is available even in :advanced release builds
-  ;; (.log js/console "start")
   (re-frame/clear-subscription-cache!)
   (re-frame/dispatch-sync [::events/initialize-db])
   (routes/init-routes!)

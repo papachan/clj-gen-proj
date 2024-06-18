@@ -12,7 +12,7 @@
 (def ^:private routes ["/"
                        [""
                         {:name      ::webapp/home
-                         :view      #'views/homepage
+                         :view      #'views/home
                          :link-text ""}]
                        ["subpage"
                         {:name      ::webapp/subpage

@@ -3,6 +3,5 @@
 
 (def app-db
   "Main state for the app"
-  {:data {}
-   :push-state nil
+  {:push-state    nil
    :current-route nil})
