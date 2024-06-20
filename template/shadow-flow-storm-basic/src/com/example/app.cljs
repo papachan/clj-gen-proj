@@ -31,6 +31,12 @@
   (.log js/console "reload")
   (render))
 
+(defn factorial [n]
+  (if (zero? n)
+    1
+    (* n (factorial (dec n)))))
+
 (defn ^:export init []
   (.log js/console "start")
+  (js/console.log "Main executed. Factorial of 5 is : " (factorial 5))
   (render))
