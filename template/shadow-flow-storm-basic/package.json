@@ -13,7 +13,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "shadow-cljs": "2.27.5",
-    "websocket": "1.0.34"
+    "shadow-cljs": "2.28.8",
+    "websocket": "1.0.35"
   }
 }

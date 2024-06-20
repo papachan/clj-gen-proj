@@ -1,7 +1,8 @@
 (ns com.example.app
   (:require
    ["react-dom/client" :refer [createRoot]]
-   [reagent.core :as r]))
+   [reagent.core :as r]
+   [com.example.util :refer [factorial]]))
 
 (defonce root (createRoot (js/document.getElementById "app")))
 
@@ -30,11 +31,6 @@
   ;; This function is called implicitly by its annotation.
   (.log js/console "reload")
   (render))
-
-(defn factorial [n]
-  (if (zero? n)
-    1
-    (* n (factorial (dec n)))))
 
 (defn ^:export init []
   (.log js/console "start")
