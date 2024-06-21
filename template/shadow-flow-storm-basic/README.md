@@ -1,1 +1,1 @@
-## basic clojurescript app project
+## Basic clojurescript project
