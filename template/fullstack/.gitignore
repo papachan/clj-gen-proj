@@ -4,12 +4,14 @@
 !.clj-kondo/config.edn
 .clj-kondo/**
 .cpcache
+.cljs_node_repl/
 .eastwood
 .factorypath
 .hg/
 .hgignore
 .java-version
 .lein-*
+.lsp/
 .lsp/.cache
 .lsp/sqlite*.db
 .nrepl-history
@@ -31,8 +33,6 @@
 /checkouts
 /classes
 /target
-resources/public/css/compiled.css
-resources/public/js/compiled
-resources/dist/js/compiled
+public/js
 node_modules/
 .shadow-cljs

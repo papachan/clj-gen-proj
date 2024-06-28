@@ -1,17 +1,17 @@
+.cljs_node_repl
 .DS_Store
 .calva/output-window/
 .classpath
 !.clj-kondo/config.edn
 .clj-kondo/**
 .cpcache
-.cljs_node_repl/
 .eastwood
 .factorypath
 .hg/
 .hgignore
 .java-version
 .lein-*
-.lsp/
+.lsp
 .lsp/.cache
 .lsp/sqlite*.db
 .nrepl-history
@@ -36,3 +36,4 @@
 public/js
 node_modules/
 .shadow-cljs
+repl-client-debug
