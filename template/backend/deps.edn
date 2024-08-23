@@ -2,7 +2,7 @@
  :deps {org.clojure/clojure {:mvn/version "1.11.3"}
         mount/mount {:mvn/version "0.1.18"}
         aero/aero {:mvn/version "1.1.6"}
-        metosin/reitit {:mvn/version "0.7.0"}
+        metosin/reitit {:mvn/version "0.7.1"}
         org.slf4j/slf4j-nop {:mvn/version "2.0.9"}
         ring/ring-devel {:mvn/version "1.12.2"}
         ring/ring-json {:mvn/version "0.5.1"}
