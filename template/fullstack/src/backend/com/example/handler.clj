@@ -48,9 +48,9 @@
                  :handler (fn [_req]
                             (response 200 {:message :ok}))}}]]]]
      ["/js/*" {:no-doc true
-              :handler (ring/create-resource-handler {:root "dist/js"})}]
+               :handler (ring/create-resource-handler {:root "dist/js"})}]
      ["/css/*" {:no-doc true
-               :handler (ring/create-resource-handler {:root "public/css"})}]]
+                :handler (ring/create-resource-handler {:root "public/css"})}]]
 
     {::default-options-endpoint nil
      :exception pretty/exception
