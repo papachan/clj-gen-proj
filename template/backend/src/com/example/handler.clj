@@ -1,6 +1,8 @@
 (ns com.example.handler
   (:require
    [com.example.middleware :as middleware]
+   [malli.util :as mu]
+   [reitit.coercion.malli]
    [muuntaja.core :as m]
    [reitit.dev.pretty :as pretty]
    [reitit.ring :as ring]
@@ -29,15 +31,28 @@
         {:tags #{"users endpoints"}}
         ["/login"
          {:post {:summary "login"
-                 :responses {200 {:content {:default {:description "Success"
-                                                      :schema [:map [:success :boolean]]
-                                                      :example {:success true}}}}}
+                 :parameters {:body [:map
+                                     [:username {:json-schema/default "usertest01"} [:string {:min 1}]]
+                                     [:password {:json-schema/default "12345"} [:string {:min 1}]]]}
                  :handler (fn [_req]
                             {:status 200
                              :body {:success true}})}}]]]]]
 
     {:exception pretty/exception
-     :data {:muuntaja m/instance
+     :data {:coercion   (reitit.coercion.malli/create
+                         { ;; set of keys to include in error messages
+                          :error-keys #{:type :coercion :in :schema :value :errors :humanized #_:transformed}
+                          ;; support lite syntax
+                          ;; :lite true
+                          ;; schema identity function (default: close all map schemas)
+                          :compile mu/closed-schema
+                          ;; strip-extra-keys (effects only predefined transformers)
+                          :strip-extra-keys true
+                          ;; add/set default values
+                          :default-values true
+                          ;; malli options
+                          :options nil})
+            :muuntaja m/instance
             :middleware [;; query-params & form-params
                          parameters/parameters-middleware
                          ;; content-negotiation
