@@ -27,7 +27,7 @@
                    (reloading-ring-handler create-handler-fn)
                    (create-handler-fn))]
     (run-jetty handler* {:port port, :join? false})
-    (println "server running in port" port)))
+    (println "server running on port" port)))
 
 (defstate ^{:on-reload :noop} jetty
   :start (start {:dev-mode? false

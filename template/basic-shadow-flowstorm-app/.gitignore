@@ -37,3 +37,4 @@ public/js
 node_modules/
 .shadow-cljs
 repl-client-debug
+bun.lockb

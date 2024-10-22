@@ -36,3 +36,4 @@
 public/js
 node_modules/
 .shadow-cljs
+bun.lockb
