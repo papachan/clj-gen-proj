@@ -5,7 +5,7 @@
 
 (defn -dev-main
   [& _]
-  (println "dev mode")
+  (println "dev mode enabled")
   (println "server running in port" (get-in config [:ring/jetty :port]))
   (sys/start (update-in config [:ring/jetty :dev-mode?] not)))
 
