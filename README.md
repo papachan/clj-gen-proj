@@ -13,7 +13,7 @@ You can just run the script by using:
 
     bb create-project.clj fullstack some.namespace
 
-If you want to list all the availables templates, you can create a tiny script:
+If you want to list all the availables templates, you can create a tiny script with babashka:
 
 ```
 #!/usr/bin/env bb
