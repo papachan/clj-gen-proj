@@ -1,6 +1,5 @@
 (ns com.example.handler
   (:require
-   [com.example.middleware :as middleware]
    [clojure.data.json :as json]
    [malli.util :as mu]
    [muuntaja.core :as m]
@@ -12,6 +11,7 @@
    [reitit.http.interceptors.muuntaja :as muuntaja]
    [reitit.http.interceptors.parameters :as parameters]
    [reitit.interceptor.sieppari :as sieppari]
+   [ring.middleware.cors :refer [wrap-cors]]
    [ring.middleware.json :refer [wrap-json-body wrap-json-response]]))
 
 (defn response-ok
@@ -60,13 +60,14 @@
                                 (coercion/coerce-response-interceptor)
                                 (coercion/coerce-request-interceptor)]
                  :middleware [[wrap-json-body {:keywords? true}]
-                              wrap-json-response
-                              ;; cors
-                              ;; middleware/allow-cross-origin
-                              ]}})
+                              wrap-json-response]}})
    (ring/routes
     (ring/create-default-handler
      {:not-found (constantly {:status  404
                               :headers {"Content-Type" "application/json"}
                               :body    (json/write-str {:error true})})})
-    {:executor sieppari/executor})))
+    {:executor sieppari/executor})
+   ;; {:middleware [[wrap-cors
+   ;;                :access-control-allow-origin [#".*"]
+   ;;                :access-control-allow-methods [:get :put :post :delete]]]}
+   ))

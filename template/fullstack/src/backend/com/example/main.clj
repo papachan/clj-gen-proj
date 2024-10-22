@@ -25,9 +25,9 @@
   (mount/start-without #'jetty)
   (start {:dev-mode? true
           :server-options {:port 3000 :join? false}})
-  (println "server running in port 3000"))
+  (println "server running on port 3000"))
 
 (defn -main
   [& _]
   (mount/start)
-  (println "server running in port 3000"))
+  (println "server running on port 3000"))
