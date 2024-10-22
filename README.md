@@ -22,10 +22,13 @@ If you want to list all the availables templates, you can create a tiny script:
    [clojure.string :as str]
    [babashka.fs :as fs]))
 
+(println "Availables Templates:")
+
 (->> (fs/file "template")
      (fs/list-dir)
-     (mapv #(-> (str %)
-                (str/split #"/")
-                second))
+     (mapv #(->> (-> (str %)
+                     (str/split #"/")
+                     second)
+                 (str "* ")))
      (run! println))
 ```
