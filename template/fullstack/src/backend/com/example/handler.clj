@@ -81,7 +81,12 @@
                          exception/exception-middleware
                          ;; decoding request body
                          muuntaja/format-request-middleware
-                         coercion/coerce-request-middleware]}})
+                         coercion/coerce-request-middleware
+                         ;; [wrap-cors
+                         ;;  :access-control-allow-origin [#".*"]
+                         ;;  :access-control-allow-credentials "true"
+                         ;;  :access-control-allow-methods [:get :put :post :delete]]
+                         ]}})
    (ring/routes
     (swagger-ui/create-swagger-ui-handler
      {:path "/api-docs"
@@ -92,6 +97,4 @@
                :urls.primaryName "swagger"
                :operationsSorter "alpha"}})
     (ring/create-default-handler
-     {:not-found (constantly {:status 404})}))
-   {:middleware [[wrap-cors :access-control-allow-origin [#".*"]
-                  :access-control-allow-methods [:get :put :post :delete]]]}))
+     {:not-found (constantly {:status 404})}))))

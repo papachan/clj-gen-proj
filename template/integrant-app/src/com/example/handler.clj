@@ -60,14 +60,15 @@
                                 (coercion/coerce-response-interceptor)
                                 (coercion/coerce-request-interceptor)]
                  :middleware [[wrap-json-body {:keywords? true}]
-                              wrap-json-response]}})
+                              wrap-json-response
+                              ;; [wrap-cors
+                              ;;  :access-control-allow-origin [#".*"]
+                              ;;  :access-control-allow-credentials "true"
+                              ;;  :access-control-allow-methods [:get :put :post :delete]]
+                              ]}})
    (ring/routes
     (ring/create-default-handler
      {:not-found (constantly {:status  404
                               :headers {"Content-Type" "application/json"}
                               :body    (json/write-str {:error true})})})
-    {:executor sieppari/executor})
-   ;; {:middleware [[wrap-cors
-   ;;                :access-control-allow-origin [#".*"]
-   ;;                :access-control-allow-methods [:get :put :post :delete]]]}
-   ))
+    {:executor sieppari/executor})))
