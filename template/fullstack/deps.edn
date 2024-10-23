@@ -20,7 +20,8 @@
   :run-m {:main-opts ["-m" "com.example.main"]}
   :start-server {:ns-default com.example.main
                  :exec-fn    -dev-main
-                 :exec-args  {}}
+                 :exec-args  {:port  8080
+                              :join? false}}
   :frontend
   {:extra-paths ["src/frontend"]
    :extra-deps

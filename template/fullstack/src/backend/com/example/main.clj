@@ -21,11 +21,11 @@
   :stop (.stop jetty))
 
 (defn -dev-main
-  [& _]
+  [args]
   (mount/start-without #'jetty)
   (start {:dev-mode? true
-          :server-options {:port 3000 :join? false}})
-  (println "server running on port 3000"))
+          :server-options args})
+  (println "server running on port" (:port args)))
 
 (defn -main
   [& _]

@@ -44,9 +44,9 @@
         {:tags #{"users endpoints"}}
         ["/login"
          {:post {:summary "login"
-                 :responses {200 {:body [:map [:message :string]]}}
+                 :responses {200 {:body [:map [:success :boolean]]}}
                  :handler (fn [_req]
-                            (response 200 {:message :ok}))}}]]]]
+                            (response 200 {:success true}))}}]]]]
      ["/js/*" {:no-doc true
                :handler (ring/create-resource-handler {:root "dist/js"})}]
      ["/css/*" {:no-doc true
