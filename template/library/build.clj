@@ -4,9 +4,9 @@
             [clojure.string :as str]
             [deps-deploy.deps-deploy :as dd]))
 
+(def version "0.1.0")
 (def lib 'org.clojars.your-username/your-library)
 (def lib-name 'your-library)
-(def version (->> "VERSION.txt" slurp str/trim))
 (def class-dir "target/classes")
 
 (def basis (delay (b/create-basis {:project "deps.edn"})))
