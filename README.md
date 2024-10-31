@@ -8,6 +8,7 @@ This babashka script parse any template from template directory, after cloning t
 - A dummy clojurescript app choose `basic-clojurescript-app`.
 - A dummy project using integrant choose `integrant-app`.
 - A dummy clojurescript project with flowstorm debugger `basic-shadow-flowstorm-app`.
+- A dummy library project, choose `library`.
 
 You can just run the script by using:
 
