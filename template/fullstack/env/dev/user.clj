@@ -3,21 +3,22 @@
   not be included in a production build of the application."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
-            [clojure.java.javadoc :refer (javadoc)]
-            [clojure.string :as str]
-            [clojure.pprint :refer (pprint)]
-            [clojure.repl :refer (apropos dir doc find-doc pst source)]
+            [clojure.java.javadoc :refer [javadoc]]
+            [clojure.pprint :refer [pprint]]
+            [clojure.repl :refer [apropos dir doc find-doc pst source]]
             [clojure.test :as test]
-            [clojure.tools.namespace.repl :as tools-ns]))
+            [clojure.tools.namespace.repl :as r]))
 
 
-(tools-ns/set-refresh-dirs "src")
+(r/set-refresh-dirs "src/backend" "env/dev")
 
 (defn reset
   []
-  (tools-ns/refresh))
+  (r/refresh))
 
 (comment
-  (tools-ns/refresh-all)
+  ;; Refresh changed namespaces
+  (r/refresh-all)
+
   ;; start server
-  (tools-ns/refresh :after 'com.example.main/-main))
+  (r/refresh :after 'com.example.main/-main))

@@ -3,18 +3,17 @@
   not be included in a production build of the application."
   (:require [clojure.string :as str]
             [clojure.java.io :as io]
-            [clojure.java.javadoc :refer (javadoc)]
-            [clojure.string :as str]
-            [clojure.pprint :refer (pprint)]
-            [clojure.repl :refer (apropos dir doc find-doc pst source)]
+            [clojure.java.javadoc :refer [javadoc]]
+            [clojure.pprint :refer [pprint]]
+            [clojure.repl :refer [apropos dir doc find-doc pst source]]
             [clojure.test :as test]
-            [clojure.tools.namespace.repl :as tools-ns]
+            [clojure.tools.namespace.repl :as r]
             [integrant.core :as ig]
             [integrant.repl :as ig-repl]
             [com.something.system :as system-util]))
 
 
-(tools-ns/set-refresh-dirs "src")
+(r/set-refresh-dirs "src" "env/dev")
 
 (defn- integrant-prep!
   []
@@ -38,6 +37,7 @@
   (ig-repl/go))
 
 (comment
-  (tools-ns/refresh-all)
+  ;; Refresh changed namespaces
+  (r/refresh-all)
 
   ,)
