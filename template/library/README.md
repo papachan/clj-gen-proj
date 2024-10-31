@@ -1,15 +1,11 @@
 # Project Library
 
-#### What is this Library?
+#### This Library for what?
 
 
 ## Usage
 
-Run the project directly, via `:main-opts` (`-m com.example.main`):
-
-    $ clojure -M:run-m
-
-Run the project's tests (they'll fail until you edit them):
+Run the project's tests:
 
     $ clojure -T:build test
 

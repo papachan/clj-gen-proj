@@ -7,7 +7,6 @@
 (def lib 'org.clojars.your-username/your-library)
 (def lib-name 'your-library)
 (def version (->> "VERSION.txt" slurp str/trim))
-(def main 'com.example.main)
 (def class-dir "target/classes")
 
 (def basis (delay (b/create-basis {:project "deps.edn"})))
