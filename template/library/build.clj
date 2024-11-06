@@ -64,5 +64,5 @@
     (dd/deploy {:installer :remote
                 :artifact (b/resolve-path jar-file)
                 :repository "clojars"
-                :pom-file "pom.xml"}))
+                :pom-file (b/pom-path (select-keys opts [:lib :class-dir]))}))
   opts)
