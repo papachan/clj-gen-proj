@@ -44,7 +44,11 @@
                        :connection          (str "scm:git:" github-url ".git")
                        :developerConnection (str "scm:git:ssh:" scm-url)
                        :tag                 (str "v" version)}
-           :pom-data  [[:licenses
+           :pom-data  [[:developers
+                        [:developer
+                         [:id "username"]
+                         [:name "Some Name"]]]
+                       [:licenses
                         [:license
                          [:name "Eclipse Public License 1.0"]
                          [:url  "https://www.eclipse.org/org/documents/epl-v10.html"]]]])))
