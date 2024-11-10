@@ -25,11 +25,11 @@
   opts)
 
 (defn sync-pom [opts]
-  (b/delete {:path "pom.xml"})
-  (b/copy-file {:src    (str class-dir
-                             "/META-INF/maven/org.clojars.your-username/your-library/pom.xml")
-                :target "pom.xml"})
-  opts)
+  (let [pom-file-path (b/pom-path {:lib lib :class-dir class-dir})]
+    (b/delete {:path "pom.xml"})
+    (b/copy-file {:src    pom-file-path
+                  :target "./pom.xml"})
+    opts))
 
 (defn- jar-opts [opts]
   (let [github-url "https://github.com/your-username/your-library"
