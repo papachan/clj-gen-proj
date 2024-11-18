@@ -14,4 +14,5 @@
   :run-m {:main-opts ["-m" "com.example.main"]}
   :start-server {:ns-default com.example.main
                  :exec-fn    -dev-main
-                 :exec-args  {}}}}
+                 :exec-args  {:dev-mode? true
+                              :server-options {:port 3000 :join? false}}}}}
