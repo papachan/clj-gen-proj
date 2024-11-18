@@ -35,10 +35,9 @@
   :stop (.stop jetty))
 
 (defn -dev-main
-  [& _]
+  [opts]
   (mount/start-without #'jetty)
-  (start {:dev-mode? true
-          :server-options {:port 3000 :join? false}}))
+  (start opts))
 
 (defn -main
   [& _]
