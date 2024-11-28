@@ -10,6 +10,7 @@
    [reitit.ring :as ring]
    [reitit.ring.coercion :as coercion]
    [reitit.ring.middleware.exception :as exception]
+   [reitit.ring.middleware.multipart :as multipart]
    [reitit.ring.middleware.muuntaja :as muuntaja]
    [reitit.ring.middleware.parameters :as parameters]
    [reitit.swagger :as swagger]
@@ -44,7 +45,8 @@
         {:tags #{"users endpoints"}}
         ["/login"
          {:post {:summary "login"
-                 :responses {200 {:body [:map [:success :boolean]]}}
+                 :responses {200 {:body [:map [:success :boolean]]}
+                             500 {:body [:map [:error :string]]}}
                  :handler (fn [_req]
                             (response 200 {:success true}))}}]]]]
      ["/js/*" {:no-doc true
@@ -56,7 +58,7 @@
      :exception pretty/exception
      :data {:coercion   (reitit.coercion.malli/create
                          { ;; set of keys to include in error messages
-                          :error-keys #{:type :coercion :in :schema :value :errors :humanized}
+                          :error-keys #{:type :coercion :in :schema :value :errors :humanized :transformed}
                           ;; support lite syntax
                           ;; :lite true
                           ;; schema identity function (default: close all map schemas)
@@ -82,6 +84,7 @@
                          ;; decoding request body
                          muuntaja/format-request-middleware
                          coercion/coerce-request-middleware
+                         multipart/multipart-middleware
                          ;; [wrap-cors
                          ;;  :access-control-allow-origin [#".*"]
                          ;;  :access-control-allow-credentials "true"
