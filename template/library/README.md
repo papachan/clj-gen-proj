@@ -31,6 +31,15 @@ Deploy it to Clojars -- needs `CLOJARS_USERNAME` and `CLOJARS_PASSWORD` environm
 
     $ clojure -X:deploy
 
+
+## Manual installation
+
+1. Check out the source code: [https://github.com/your-username/library-name](https://github.com/your-username/library-name)
+2. Install it:
+
+    $ clojure -T:build install
+
+
 # Deploy notes for clojars
 
 1. Update the version of the maven package in pom.xml - and git commit it.
