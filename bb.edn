@@ -1,0 +1,17 @@
+{:paths ["."]
+
+ :deps {babashka/fs {:mvn/version "0.5.24"}}
+
+ :tasks
+ {:requires ([babashka.fs :as fs])
+
+  clean (fs/delete-tree "generated")
+
+  list:templates (do
+                   (println "Available templates:")
+                   (->> (fs/file "template")
+                        (fs/list-dir)
+                        (map (fn [x]
+                               (let [[_ n] (clojure.string/split (str x) (re-pattern "/"))]
+                                 (str "* " n))))
+                        (run! println)))}}

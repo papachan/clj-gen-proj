@@ -13,22 +13,6 @@ You can just run the script by using:
 
     bb create-project.clj fullstack some.namespace
 
-If you want to list all the availables templates, you can create a tiny script with babashka:
+List all the available templates by running this command:
 
-```
-#!/usr/bin/env bb
-(ns main
-  (:require
-   [clojure.string :as str]
-   [babashka.fs :as fs]))
-
-(println "Availables Templates:")
-
-(->> (fs/file "template")
-     (fs/list-dir)
-     (mapv #(->> (-> (str %)
-                     (str/split #"/")
-                     second)
-                 (str "* ")))
-     (run! println))
-```
+    bb run list:templates
