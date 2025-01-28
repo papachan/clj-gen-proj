@@ -19,5 +19,5 @@
         :devtools {:repl-pprint true
                    :after-load com.example.client/refresh
                    :preloads    [devtools.preload
-                                 com.fulcrologic.fulcro.inspect.preload
+                                 com.fulcrologic.devtools.chrome-preload
                                  com.fulcrologic.fulcro.inspect.dom-picker-preload]}}}}

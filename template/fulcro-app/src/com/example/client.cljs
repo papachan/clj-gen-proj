@@ -4,20 +4,23 @@
    [com.fulcrologic.fulcro.react.version18 :refer [with-react18]]
    [com.fulcrologic.fulcro.components :as comp :refer [defsc]]
    [com.fulcrologic.fulcro.application :as app]
-   [com.fulcrologic.fulcro.dom :as dom]))
+   [com.fulcrologic.fulcro.dom :as dom]
+   [fulcro.inspect.tool]))
 
 (defonce app (-> (app/fulcro-app)
                  (with-react18)))
 
+(fulcro.inspect.tool/add-fulcro-inspect! app)
+
 (defsc Root [this props]
   (dom/div :.d-flex.align-items-center.justify-content-center.vh-100
-   (dom/div :.text-center
-            (dom/h3 "Hello Fulcro.")
-            (dom/p "I have "
-                   (dom/strong "bold")
-                   " and "
-                   (dom/span :.text-danger "red")
-                   " text."))))
+    (dom/div :.text-center
+      (dom/h3 "Hello Fulcro.")
+        (dom/p "I have "
+          (dom/strong "bold")
+          " and "
+          (dom/span :.text-danger "red")
+          " text."))))
 
 (defn ^:export init
   "Shadow-cljs sets this up to be our entry-point function. See shadow-cljs.edn `:init-fn` in the modules of the main build."
