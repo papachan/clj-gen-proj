@@ -1,0 +1,23 @@
+{:deps {:aliases [:frontend]}
+
+ :dev-http {8080 "classpath:public"}
+
+ :nrepl {:port 8777}
+
+ :builds
+ {:app {:target     :browser
+        :output-dir "resources/public/js/main"
+        :asset-path "/js/main"
+        :dev {:compiler-options
+              {:external-config {:fulcro {:html-source-annotations? true}}}}
+
+        :modules
+        {:main
+         {:init-fn example.app/init
+          :entries [example.app]}}
+
+        :devtools {:repl-pprint true
+                   :after-load example.app/refresh
+                   :preloads    [devtools.preload
+                                 com.fulcrologic.fulcro.inspect.preload
+                                 com.fulcrologic.fulcro.inspect.dom-picker-preload]}}}}
