@@ -3,14 +3,13 @@
    [com.example.application :refer [SPA]]
    [com.fulcrologic.fulcro.react.version18 :refer [with-react18]]
    [com.fulcrologic.fulcro.components :as comp :refer [defsc]]
+   [com.fulcrologic.devtools.common.target :refer [ido]]
    [com.fulcrologic.fulcro.application :as app]
    [com.fulcrologic.fulcro.dom :as dom]
    [fulcro.inspect.tool]))
 
 (defonce app (-> (app/fulcro-app)
                  (with-react18)))
-
-(fulcro.inspect.tool/add-fulcro-inspect! app)
 
 (defsc Root [this props]
   (dom/div :.d-flex.align-items-center.justify-content-center.vh-100
@@ -27,6 +26,8 @@
   []
   (reset! SPA app)
   (app/mount! app Root "app")
+  (ido
+   (fulcro.inspect.tool/add-fulcro-inspect! app))
   (js/console.log "Loaded"))
 
 (defn ^:export refresh
