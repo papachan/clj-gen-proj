@@ -13,11 +13,11 @@
 
         :modules
         {:main
-         {:init-fn example.app/init
-          :entries [example.app]}}
+         {:init-fn com.example.client/init
+          :entries [com.example.client]}}
 
         :devtools {:repl-pprint true
-                   :after-load example.app/refresh
+                   :after-load com.example.client/refresh
                    :preloads    [devtools.preload
                                  com.fulcrologic.fulcro.inspect.preload
                                  com.fulcrologic.fulcro.inspect.dom-picker-preload]}}}}

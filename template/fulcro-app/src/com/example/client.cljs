@@ -1,6 +1,6 @@
-(ns example.app.client
+(ns com.example.client
   (:require
-   [example.app.application :refer [SPA]]
+   [com.example.application :refer [SPA]]
    [com.fulcrologic.fulcro.react.version18 :refer [with-react18]]
    [com.fulcrologic.fulcro.components :as comp :refer [defsc]]
    [com.fulcrologic.fulcro.application :as app]
