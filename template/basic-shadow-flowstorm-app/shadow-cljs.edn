@@ -9,11 +9,12 @@
  {:dev-test {:target     :browser
              :modules
              {:main
-              {:init-fn com.example.app/init}}
+              {:init-fn  com.example.app/init}}
 
              :compiler-options {:infer-externs false}
 
-             :devtools {:before-load com.example.app/stop
+             :devtools {:after-load  com.example.app/re-render
+                        :before-load com.example.app/stop
                         :http-port   8021
                         :http-root   "public"
                         :preloads    [flow-storm.storm-preload
