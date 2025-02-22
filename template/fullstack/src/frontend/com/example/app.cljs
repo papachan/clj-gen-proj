@@ -26,8 +26,7 @@
 (defn render []
   (.render root (r/as-element [router-component {:router routes/router}])))
 
-(defn ^:dev/after-load re-render []
-  ;; The `:dev/after-load` metadata causes this function to be called
+(defn ^:export re-render []
   ;; after shadow-cljs hot-reloads code.
   ;; This function is called implicitly by its annotation.
   (re-frame/clear-subscription-cache!)

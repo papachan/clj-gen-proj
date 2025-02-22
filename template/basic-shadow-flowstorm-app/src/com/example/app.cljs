@@ -25,8 +25,7 @@
   ;; this is controlled by :before-load in the config
   (.log js/console "stop"))
 
-(defn ^:dev/after-load re-render []
-  ;; The `:dev/after-load` metadata causes this function to be called
+(defn ^:export re-render []
   ;; after shadow-cljs hot-reloads code.
   ;; This function is called implicitly by its annotation.
   (.log js/console "reload")
