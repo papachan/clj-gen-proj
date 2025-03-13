@@ -1,9 +1,9 @@
 (ns com.example.views
   (:require
    [re-frame.core :as re-frame]
-   [basic.example.events :as events]
-   [basic.example.myapp :as webapp]
-   [basic.example.subs]))
+   [com.example.events :as events]
+   [com.example.myapp :as webapp]
+   [com.example.subs]))
 
 
 (defn navigation

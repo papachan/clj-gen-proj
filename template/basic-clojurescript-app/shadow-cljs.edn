@@ -13,5 +13,6 @@
         {:main
          {:init-fn com.example.app/init}}
 
-        :devtools {:before-load com.example.app/stop
+        :devtools {:after-load  com.example.app/re-render
+                   :before-load com.example.app/stop
                    :preloads    [devtools.preload]}}}}
