@@ -12,7 +12,7 @@ Build a deployable jar of this library:
 
 Install it locally:
 
-    $ clojure -X:install
+    $ clojure -T:build install
 
 Run the project's tests:
 
@@ -48,6 +48,6 @@ Deploy it to Clojars -- needs `CLOJARS_USERNAME` and `CLOJARS_PASSWORD` environm
 
 ## License
 
-Copyright &copy; 2024 Your-Username.
+Copyright &copy; 2025 Your-Username.
 
 Licensed under the Eclipse Public License [EPL 1.0](LICENSE).

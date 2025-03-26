@@ -8,6 +8,7 @@
 (def lib 'org.clojars.your-username/your-library)
 (def lib-name 'your-library)
 (def class-dir "target/classes")
+(def output-file (format "target/%s.jar" lib-name))
 
 (def basis (delay (b/create-basis {:project "deps.edn"})))
 
@@ -59,14 +60,23 @@
   (b/copy-dir {:src-dirs   ["resources" "src"]
                :target-dir class-dir})
   (b/jar {:class-dir class-dir
-          :jar-file  (format "target/%s.jar" lib-name)})
+          :jar-file  output-file})
   (sync-pom nil)
   opts)
 
+(defn install "Install the jar locally" [opts]
+  (jar nil)
+  (println (format "Installing %s to local Maven repository..." version))
+  (b/install {:basis     @basis
+              :lib       lib
+              :class-dir ["resources" "src"]
+              :version   version
+              :jar-file  output-file}))
+
 (defn deploy "Deploy the JAR to Clojars." [opts]
   (let [{:keys [jar-file] :as opts} (jar-opts opts)]
-    (dd/deploy {:installer :remote
-                :artifact (b/resolve-path jar-file)
+    (dd/deploy {:installer  :remote
+                :artifact   (b/resolve-path jar-file)
                 :repository "clojars"
-                :pom-file (b/pom-path (select-keys opts [:lib :class-dir]))}))
+                :pom-file   (b/pom-path (select-keys opts [:lib :class-dir]))}))
   opts)
