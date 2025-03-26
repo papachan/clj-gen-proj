@@ -69,7 +69,7 @@
   (println (format "Installing %s to local Maven repository..." version))
   (b/install {:basis     @basis
               :lib       lib
-              :class-dir ["resources" "src"]
+              :class-dir class-dir
               :version   version
               :jar-file  output-file}))
 
