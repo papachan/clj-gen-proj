@@ -8,8 +8,8 @@
  {:app {:target     :browser
         :output-dir "resources/public/js/main"
         :asset-path "/js/main"
-        :dev {:compiler-options
-              {:external-config {:fulcro {:html-source-annotations? true}}}}
+        :dev        {:compiler-options
+                     {:external-config {:fulcro {:html-source-annotations? true}}}}
 
         :modules
         {:main
@@ -17,7 +17,7 @@
           :entries [com.example.client]}}
 
         :devtools {:repl-pprint true
-                   :after-load com.example.client/refresh
+                   :after-load  com.example.client/refresh
                    :preloads    [devtools.preload
                                  com.fulcrologic.devtools.chrome-preload
                                  com.fulcrologic.fulcro.inspect.dom-picker-preload]}}}}

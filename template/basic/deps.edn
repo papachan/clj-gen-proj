@@ -1,7 +1,7 @@
 {:paths ["src"]
- :deps {org.clojure/clojure {:mvn/version "1.12.0"}}
+ :deps  {org.clojure/clojure {:mvn/version "1.12.0"}}
  :aliases
  {:run-m {:main-opts ["-m" "com.example.app"]}
   :run-x {:ns-default com.example.app
-          :exec-fn function-called-from-command-line
-          :exec-args {:name "hello"}}}}
+          :exec-fn    function-called-from-command-line
+          :exec-args  {:name "hello"}}}}

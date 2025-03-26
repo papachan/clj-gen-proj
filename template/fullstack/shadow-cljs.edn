@@ -19,12 +19,12 @@
          :preloads    [day8.re-frame-10x.preload]}
 
         :dev
-        {:compiler-options {:main com.example.app
-                            :infer-externs auto
+        {:compiler-options {:main            com.example.app
+                            :infer-externs   auto
                             :closure-defines {goog.DEBUG                          true
                                               re-frame.trace.trace-enabled?       true
                                               day8.reframe.tracing.trace-enabled? true}}}
 
         :release
-        {:output-dir "resources/dist/js/compiled"
+        {:output-dir       "resources/dist/js/compiled"
          :compiler-options {:optimizations :advanced}}}}}

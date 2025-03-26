@@ -6,17 +6,17 @@
          }
 
  :builds
- {:dev-test {:target     :browser
+ {:dev-test {:target :browser
              :modules
              {:main
-              {:init-fn  com.example.app/init}}
+              {:init-fn com.example.app/init}}
 
              :compiler-options {:infer-externs false}
 
-             :devtools {:after-load  com.example.app/re-render
-                        :before-load com.example.app/stop
-                        :http-port   8021
-                        :http-root   "public"
-                        :preloads    [flow-storm.storm-preload
-                                      devtools.preload]}
-             :output-to  "public/dev-test.js"}}}
+             :devtools  {:after-load  com.example.app/re-render
+                         :before-load com.example.app/stop
+                         :http-port   8021
+                         :http-root   "public"
+                         :preloads    [flow-storm.storm-preload
+                                       devtools.preload]}
+             :output-to "public/dev-test.js"}}}

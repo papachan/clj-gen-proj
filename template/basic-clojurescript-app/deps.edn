@@ -6,4 +6,4 @@
          reagent/reagent           {:mvn/version "1.3.0"}}
 
  :aliases {:frontend {:extra-deps {cider/cider-nrepl {:mvn/version "0.53.0"}}
-                      :main-opts ["-m" "shadow.cljs.devtools.cli" "watch" ":app"]}}}
+                      :main-opts  ["-m" "shadow.cljs.devtools.cli" "watch" ":app"]}}}
