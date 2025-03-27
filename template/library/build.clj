@@ -12,7 +12,18 @@
 
 (def basis (delay (b/create-basis {:project "deps.edn"})))
 
+(defn sha
+  [{:keys [dir path] :or {dir "."}}]
+  (-> {:command-args (cond-> ["git" "rev-parse" "HEAD"]
+                       path (conj "--" path))
+       :dir (.getPath (b/resolve-path dir))
+       :out :capture}
+      b/process
+      :out
+      str/trim))
+
 (defn clean "Clean the target classes folder" [opts]
+  (b/delete {:path "pom.xml"})
   (b/delete {:path "target"}))
 
 (defn test "Run all the tests." [opts]
@@ -27,7 +38,6 @@
 
 (defn sync-pom [opts]
   (let [pom-file-path (b/pom-path {:lib lib :class-dir class-dir})]
-    (b/delete {:path "pom.xml"})
     (b/copy-file {:src    pom-file-path
                   :target "./pom.xml"})
     opts))
@@ -44,11 +54,11 @@
            :scm       {:url                 github-url
                        :connection          (str "scm:git:" github-url ".git")
                        :developerConnection (str "scm:git:ssh:" scm-url)
-                       :tag                 (str "v" version)}
+                       :tag                 "HEAD"} ;; you can use ("v" version) or a git (sha {})
            :pom-data  [[:developers
                         [:developer
-                         [:id "username"]
-                         [:name "Some Name"]]]
+                         [:id "your username"]
+                         [:name "your Name"]]]
                        [:licenses
                         [:license
                          [:name "Eclipse Public License 1.0"]
