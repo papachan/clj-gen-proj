@@ -1,5 +1,6 @@
 (ns com.example.views
   (:require
+   [clojure.string :as str]
    [re-frame.core :as re-frame]
    [com.example.events :as events]
    [com.example.myapp :as webapp]
@@ -7,7 +8,7 @@
 
 
 (defn navigation
-  []
+  [page-selected]
   [:header
    [:nav
     {:className "bg-gray-200 p-6"}
@@ -19,13 +20,15 @@
        [:a
         {:href      "#"
          :on-click  #(re-frame/dispatch [::events/push-state {:route ::webapp/home}])
-         :className "hover:text-gray-300"}
+         :className (str (if (= "home" page-selected)
+                           "text-blue-600" "underline") " hover:text-gray-300 text-3xl font-bold")}
         "home"]]
       [:li
        [:a
         {:href      "#"
          :on-click  #(re-frame/dispatch [::events/push-state {:route ::webapp/subpage}])
-         :className "hover:text-gray-300"}
+         :className (str (if (str/starts-with?  page-selected "subpage")
+                           "text-blue-600" "underline") " hover:text-gray-300 text-3xl font-bold")}
         "subpage 1"]]]]]])
 
 (defn container
@@ -47,12 +50,12 @@
   []
   [:div
    {:className "bg-gray-100"}
-   (navigation)
+   (navigation "home")
    (container "home")])
 
 (defn subpage
   []
   [:div
    {:className "bg-gray-100"}
-   (navigation)
+   (navigation "subpage 1")
    (container "subpage 1")])
