@@ -16,7 +16,8 @@
         :devtools
         {:after-load  com.example.app/re-render
          :before-load com.example.app/stop
-         :preloads    [day8.re-frame-10x.preload]}
+         :preloads    [day8.re-frame-10x.preload.react-18
+                       devtools.preload]}
 
         :dev
         {:compiler-options {:main            com.example.app
