@@ -6,7 +6,7 @@
     "shadow:watch": "bunx shadow-cljs watch app",
     "shadow:prod": "bunx shadow-cljs release app;",
     "tailwind:watch": "bunx @tailwindcss/cli -i ./tailwind.css -o ./public/css/compiled.css --watch",
-    "tailwind:release": "bunx @tailwindcss/cli -i ./tailwind.css -o ./public/css/compiled.css --minify"
+    "tailwind:release": "NODE_ENV=production && bunx @tailwindcss/cli -i ./tailwind.css -o ./public/css/compiled.css --minify"
   },
   "dependencies": {
     "react": "^19.1.0",
