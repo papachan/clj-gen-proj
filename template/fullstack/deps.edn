@@ -4,14 +4,14 @@
          aero/aero                  {:mvn/version "1.1.6"}
          metosin/reitit             {:mvn/version "0.7.2"}
          metosin/ring-swagger-ui    {:mvn/version "5.17.14"}
-         metosin/ring-http-response {:mvn/version "0.9.4"}
+         metosin/ring-http-response {:mvn/version "0.9.5"}
          org.slf4j/slf4j-nop        {:mvn/version "2.0.9"}
-         ring/ring                  {:mvn/version "1.14.0"}
-         ring/ring-jetty-adapter    {:mvn/version "1.14.0"}
+         ring/ring                  {:mvn/version "1.14.1"}
+         ring/ring-jetty-adapter    {:mvn/version "1.14.1"}
          ring/ring-json             {:mvn/version "0.5.1"}
          ring-cors/ring-cors        {:mvn/version "0.1.13"}
          metosin/malli              {:mvn/version "0.16.4"}
-         hiccup/hiccup              {:mvn/version "2.0.0-RC3"}}
+         hiccup/hiccup              {:mvn/version "2.0.0-RC5"}}
 
  :aliases
  {:dev          {:extra-paths ["env/dev"]
