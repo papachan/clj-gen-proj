@@ -13,4 +13,7 @@
 (defonce root (uix.dom/create-root (js/document.getElementById "root")))
 
 (defn ^:export init []
-  (uix.dom/render-root ($ app) root))
+  (uix.dom/render-root
+   ($ uix/strict-mode
+      ($ app))
+   root))
