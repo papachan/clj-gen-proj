@@ -1,4 +1,4 @@
-{:deps {:aliases [:cljs-storm]}
+{:deps {:aliases [:dev :cljs-storm]}
 
  :nrepl {:port 7123
          ;; Enable this if you want to use it with cider-storm
