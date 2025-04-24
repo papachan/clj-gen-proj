@@ -16,18 +16,18 @@
     (run-jetty handler* server-options)))
 
 (defstate ^{:on-reload :noop} jetty
-  :start (start {:dev-mode? false
-                 :server-options {:port 3000 :join? false}})
+  :start (start (mount/args))
   :stop (.stop jetty))
 
 (defn -dev-main
   [args]
-  (mount/start-without #'jetty)
-  (start {:dev-mode? true
-          :server-options args})
+  (mount/start-with-args {:dev-mode? true
+                          :server-options args})
   (println "server running on port" (:port args)))
 
 (defn -main
   [& _]
-  (mount/start)
+  (mount/start-with-args
+   {:dev-mode? false
+    :server-options {:port 3000 :join? false}})
   (println "server running on port 3000"))

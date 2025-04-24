@@ -7,7 +7,9 @@
             [clojure.pprint :refer [pprint]]
             [clojure.repl :refer [apropos dir doc find-doc pst source]]
             [clojure.test :as test]
-            [clojure.tools.namespace.repl :as r]))
+            [clojure.tools.namespace.repl :as r]
+            [mount.core :as mount]
+            [com.example.main :as main]))
 
 
 (r/set-refresh-dirs "src/backend" "env/dev")
@@ -15,6 +17,12 @@
 (defn reset
   []
   (r/refresh))
+
+(defn start-server []
+  (main/-dev-main {:port 8080 :join? false}))
+
+(defn stop-server []
+  (mount/stop))
 
 (comment
   ;; Refresh changed namespaces
