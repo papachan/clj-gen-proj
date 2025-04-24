@@ -26,19 +26,19 @@
         handler* (if dev-mode?
                    (reloading-ring-handler create-handler-fn)
                    (create-handler-fn))]
-    (run-jetty handler* {:port port, :join? false})
-    (println "server running on port" port)))
+    (println "server running on port" port)
+    (run-jetty handler* {:port port, :join? false})))
 
 (defstate ^{:on-reload :noop} jetty
-  :start (start {:dev-mode? false
-                 :server-options {:port 3000 :join? false}})
+  :start (start (mount/args))
   :stop (.stop jetty))
 
 (defn -dev-main
   [opts]
-  (mount/start-without #'jetty)
-  (start opts))
+  (mount/start-with-args opts))
 
 (defn -main
   [& _]
-  (mount/start))
+  (mount/start-with-args
+   {:dev-mode?      false
+    :server-options {:port 3000 :join? false}}))
