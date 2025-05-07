@@ -6,6 +6,6 @@
 
  :aliases {:frontend {:extra-deps {com.fulcrologic/fulcro-inspect {:mvn/version "1.0.3"}
                                    binaryage/devtools             {:mvn/version "1.0.7"}
-                                   cider/cider-nrepl              {:mvn/version "0.55.3"}
+                                   cider/cider-nrepl              {:mvn/version "0.55.7"}
                                    thheller/shadow-cljs           {:mvn/version "3.0.2"}}
                       :main-opts  ["-m" "shadow.cljs.devtools.cli" "watch" "app"]}}}
