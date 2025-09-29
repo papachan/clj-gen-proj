@@ -1,5 +1,5 @@
 {:paths ["src" "resources"]
- :deps  {org.clojure/clojure {:mvn/version "1.12.2"}}
+ :deps  {org.clojure/clojure {:mvn/version "1.12.3"}}
  :aliases
  {:build  {:deps       {io.github.clojure/tools.build {:git/tag "v0.10.8" :git/sha "2fdfd66"}
                         slipset/deps-deploy           {:mvn/version "0.2.2"}}
