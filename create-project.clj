@@ -15,6 +15,9 @@
                  second))
        (into #{})))
 
+(defn valid-namespace? [ns]
+  (re-matches #"^[a-z][a-z0-9]*(\.[a-z][a-z0-9-]*)*$" ns))
+
 (defn ns->path [s]
   (-> s
       (str/replace "-" "_")
@@ -33,9 +36,12 @@
                                                last)
          "- eg: bb create-project.clj [template-type] [your-namespace]"))
   (when (not (contains? templates (str/lower-case template-name)))
-    (die "Please use a valid template, here are the valid templates:" (str/join " or " (map #(str "`" % "`") templates))))
+    (die "Invalid template - some valid templates here:" (str/join " or " (map #(str "`" % "`") templates))))
+  (when (nil? (valid-namespace? project-ns))
+    (die "Invalid namespace:" project-ns "is not a valid namespace."))
   (let [dir (io/file "generated")]
     (when (fs/directory? dir)
+      (println "Warning: 'generated/' directory will be deleted...")
       (fs/delete-tree dir))
     (let [template-dir (str "template/" (str/lower-case template-name) "/")]
       (io/make-parents (io/file dir "src"))
