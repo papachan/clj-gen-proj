@@ -1,9 +1,9 @@
 (ns com.example.app
   (:require
-   ["react-dom/client" :refer [createRoot]]
+   [reagent.dom.client :as rdomc]
    [reagent.core :as r]))
 
-(defonce root (createRoot (js/document.getElementById "app")))
+(defonce root (delay (rdomc/create-root (js/document.getElementById "app"))))
 
 (defn my-component []
   [:div
@@ -17,7 +17,7 @@
       {:style {:color "red"}} " and red "] "text."]]])
 
 (defn render []
-  (.render root (r/as-element [my-component])))
+  (rdomc/render @root [my-component]))
 
 (defn stop []
   ;; stop is called before any code is reloaded
