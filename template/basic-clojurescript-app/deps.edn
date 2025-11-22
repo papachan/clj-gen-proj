@@ -3,7 +3,7 @@
          org.clojure/clojurescript {:mvn/version "1.12.42"}
          binaryage/devtools        {:mvn/version "1.0.7"}
          thheller/shadow-cljs      {:mvn/version "3.2.1"}
-         reagent/reagent           {:mvn/version "2.0.0"}}
+         reagent/reagent           {:mvn/version "2.0.1"}}
 
  :aliases {:frontend {:extra-deps {cider/cider-nrepl {:mvn/version "0.58.0"}}
                       :main-opts  ["-m" "shadow.cljs.devtools.cli" "watch" ":app"]}}}

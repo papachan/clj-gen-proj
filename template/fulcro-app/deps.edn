@@ -1,7 +1,7 @@
 {:paths ["src" "resources"]
  :deps  {org.clojure/clojure       {:mvn/version "1.12.3"}
          org.clojure/clojurescript {:mvn/version "1.12.42"}
-         reagent/reagent           {:mvn/version "1.3.0"}
+         reagent/reagent           {:mvn/version "2.0.1"}
          com.fulcrologic/fulcro    {:mvn/version "3.8.6"}}
 
  :aliases {:frontend {:extra-deps {com.fulcrologic/fulcro-inspect {:mvn/version "1.0.3"}
