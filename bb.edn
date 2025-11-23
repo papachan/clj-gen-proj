@@ -1,7 +1,10 @@
 {:paths ["."]
 
- :deps {babashka/fs {:mvn/version "0.5.24"}}
+ :deps {babashka/fs {:mvn/version "0.5.27"}}
 
+ :init
+ (def windows? (str/starts-with? (System/getProperty "os.name")
+                                 "Windows"))
  :tasks
  {:requires ([babashka.fs :as fs])
 
@@ -12,6 +15,6 @@
                    (->> (fs/file "template")
                         (fs/list-dir)
                         (map (fn [x]
-                               (let [[_ n] (clojure.string/split (str x) (re-pattern "/"))]
+                               (let [[_ n] (clojure.string/split (str x) (re-pattern (if windows? "\\\\" "/")))]
                                  (str "* " n))))
                         (run! println)))}}
