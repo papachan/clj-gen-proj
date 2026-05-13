@@ -1,6 +1,6 @@
 {:paths   ["src"]
- :deps    {org.clojure/clojure       {:mvn/version "1.12.3"}
-           org.clojure/clojurescript {:mvn/version "1.12.42"}
+ :deps    {org.clojure/clojure       {:mvn/version "1.12.5"}
+           org.clojure/clojurescript {:mvn/version "1.12.145"}
            com.pitch/uix.core        {:mvn/version "1.4.8"}
            com.pitch/uix.dom         {:mvn/version "1.4.8"}}
  :aliases {:shadow {:extra-deps {refactor-nrepl/refactor-nrepl {:mvn/version "3.11.0"}

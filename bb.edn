@@ -1,6 +1,6 @@
 {:paths ["."]
 
- :deps {babashka/fs {:mvn/version "0.5.27"}}
+ :deps {babashka/fs {:mvn/version "0.5.33"}}
 
  :init
  (def windows? (str/starts-with? (System/getProperty "os.name")
