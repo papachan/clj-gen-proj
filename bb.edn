@@ -2,19 +2,17 @@
 
  :deps {babashka/fs {:mvn/version "0.5.33"}}
 
- :init
- (def windows? (str/starts-with? (System/getProperty "os.name")
-                                 "Windows"))
  :tasks
  {:requires ([babashka.fs :as fs])
 
   clean (fs/delete-tree "generated")
 
-  list:templates (do
-                   (println "Available templates:")
-                   (->> (fs/file "template")
-                        (fs/list-dir)
-                        (map (fn [x]
-                               (let [[_ n] (clojure.string/split (str x) (re-pattern (if windows? "\\\\" "/")))]
-                                 (str "* " n))))
-                        (run! println)))}}
+  list:templates (let [windows? (clojure.string/starts-with? (System/getProperty "os.name")
+                                 "Windows")]
+                  (println "Available templates:")
+                  (->> (fs/file "template")
+                   (fs/list-dir)
+                   (map (fn [x]
+                         (let [[_ n] (clojure.string/split (str x) (re-pattern (if windows? "\\\\" "/")))]
+                          (str "* " n))))
+                   (run! println)))}}
