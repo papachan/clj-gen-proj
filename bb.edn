@@ -1,6 +1,6 @@
 {:paths ["."]
 
- :deps {babashka/fs {:mvn/version "0.5.33"}}
+ :deps {babashka/fs {:mvn/version "0.5.34"}}
 
  :tasks
  {:requires ([babashka.fs :as fs])
@@ -10,7 +10,8 @@
   list:templates (let [windows? (clojure.string/starts-with? (System/getProperty "os.name")
                                  "Windows")]
                   (println "Available templates:")
-                  (->> (fs/file "template")
+                  (->>
+                   (fs/file "template")
                    (fs/list-dir)
                    (map (fn [x]
                          (let [[_ n] (clojure.string/split (str x) (re-pattern (if windows? "\\\\" "/")))]
