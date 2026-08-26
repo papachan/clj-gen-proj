@@ -36,7 +36,7 @@
                                                last)
          "- eg: bb create-project.clj [template-type] [your-namespace]"))
   (when (not (contains? templates (str/lower-case template-name)))
-    (die "Invalid template - some valid templates here:" (str/join " or " (map #(str "`" % "`") templates))))
+    (die "Error: Invalid template\r\n - You can choose a valid template by running this command: bb run list:templates"))
   (when (nil? (valid-namespace? project-ns))
     (die "Invalid namespace:" project-ns "is not a valid namespace."))
   (let [dir (io/file "generated")]
