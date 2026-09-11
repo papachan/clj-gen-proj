@@ -1,0 +1,5 @@
+html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
+
+/* p5 inserts an inline <canvas>, which leaves a small gap below it
+   (space reserved for text descenders). Block display removes it. */
+#app canvas { display: block; }
