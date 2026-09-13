@@ -2,13 +2,18 @@
 
 This babashka script parse any template from template directory, after cloning this repo you will be able to use four differents templates: Basic, Backend, Basic-clojurescript-app and Fullstack.
 
-- Starting by a basic project structure choose a `Basic` project
-- Basic backend project ( api with swagger ) choose `Backend` project.
-- A complete fullstack project ( clojure files and clojurescript files at the same level ) choose `Fullstack`.
-- A dummy clojurescript app choose `basic-clojurescript-app`.
-- A dummy project using integrant choose `integrant-app`.
-- A dummy clojurescript project with flowstorm debugger `basic-shadow-flowstorm-app`.
-- A dummy library project, choose `library`.
+| Template | |
+|---|---|
+| basic | Bare deps.edn + one app.clj, :run-m/:run-x aliases |
+| backend | Ring/Jetty + reitit + mount + aero |
+| integrant-app | Same shape but Integrant + reitit |
+| fullstack | Backend (reitit+malli+hiccup+swagger-ui) + re-frame frontend + Tailwind |
+| basic-clojurescript-app | shadow-cljs + reagent |
+| basic-shadow-flowstorm-app | reagent + FlowStorm-instrumented cljs compiler, re-frame-10x |
+| shadow-uix-app | shadow-cljs + UIx (React hooks) + Tailwind |
+| fulcro-app | Fulcro 3 client + fulcro-inspect |
+| clojurescript-quil-app | shadow-cljs + Quil sketch |
+| library | tools.build + deps-deploy + codox + test-runner |
 
 You can just run the script by using:
 
