@@ -2,7 +2,7 @@
 
 This babashka script parse any template from template directory, after cloning this repo you will be able to use four differents templates: Basic, Backend, Basic-clojurescript-app and Fullstack.
 
-| Template | |
+| Template | Description |
 |---|---|
 | basic | Bare deps.edn + one app.clj, :run-m/:run-x aliases |
 | backend | Ring/Jetty + reitit + mount + aero |
@@ -14,6 +14,7 @@ This babashka script parse any template from template directory, after cloning t
 | fulcro-app | Fulcro 3 client + fulcro-inspect |
 | clojurescript-quil-app | shadow-cljs + Quil sketch |
 | library | tools.build + deps-deploy + codox + test-runner |
+| clojurescript-quil-app | shadow-cljs with quil sketch |
 
 You can just run the script by using:
 

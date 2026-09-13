@@ -1,1 +1,1 @@
-## web project with clojurescript using p5.js and quil
+## web project with clojurescript and quil sketch
