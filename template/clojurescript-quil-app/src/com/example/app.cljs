@@ -43,22 +43,12 @@
   :mouse-pressed mouse-pressed
   :middleware [m/fun-mode])
 
-(defn render []
-  ;; render is called on page load and after shadow-cljs hot-reloads code.
-  ;; This function is called explicitly by init and implicitly by re-render.
-  (.log js/console "render!"))
-
-(defn stop []
-  ;; stop is called before any code is reloaded
-  ;; this is controlled by :before-load in the config
-  (.log js/console "stop"))
-
 (defn ^:export re-render []
   ;; after shadow-cljs hot-reloads code.
   ;; This function is called implicitly by its annotation.
   (.log js/console "reload")
-  (render))
+  sketch-app)
 
 (defn ^:export init []
-  (.log js/console "start")
-  (render))
+  (.log js/console "init")
+  sketch-app)
