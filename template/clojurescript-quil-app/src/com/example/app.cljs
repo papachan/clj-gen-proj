@@ -6,6 +6,7 @@
 (defn setup []
   (q/frame-rate 60)
   (q/color-mode :hsb)
+  (q/smooth)
   {:color  0
    :angle  0
    :paused false})
