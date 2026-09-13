@@ -1,0 +1,16 @@
+{:deps {:aliases [:web]}
+
+ :dev-http {8080 {:root       "public"
+                  :push-state "/index.html"}}
+
+ :nrepl {:port 8777}
+
+ :builds
+ {:app {:target     :browser
+        :output-dir "public/js"
+        :asset-path "/js"
+        :modules
+        {:main
+         {:init-fn com.example.app/init}}
+        :js-options {:resolve {"p5" {:target :global :global "p5"}}}
+        :devtools   {:after-load com.example.app/re-render}}}}

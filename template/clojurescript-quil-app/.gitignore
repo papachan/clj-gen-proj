@@ -1,0 +1,43 @@
+.DS_Store
+.hg/
+.hgignore
+
+# Editors and IDEs
+.calva/
+.lsp/
+.portal/
+.vscode/
+.settings/
+.classpath
+.project
+.factorypath
+*.iml
+*.swp
+*~
+\#*\#
+.\#*
+*.log
+
+# Builds
+/target
+/classes
+/checkouts
+public/js/
+*.class
+*.jar
+node_modules/
+.cpcache/
+.shadow-cljs/
+bun.lockb
+.clj-kondo/**
+!.clj-kondo/config.edn
+
+# REPL and tooling state
+.nrepl-port
+.nrepl-history
+.socket-repl-port
+.rebel_readline_history
+.cljs_node_repl/
+.eastwood
+.lein-*
+.java-version
