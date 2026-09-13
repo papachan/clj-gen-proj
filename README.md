@@ -1,4 +1,4 @@
-### clj-gen-proj
+### clojure project generator
 
 This babashka script parse any template from template directory, after cloning this repo you will be able to use four differents templates: Basic, Backend, Basic-clojurescript-app and Fullstack.
 
