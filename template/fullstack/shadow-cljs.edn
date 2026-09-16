@@ -5,9 +5,11 @@
  :nrepl {:port 8777}
 
  :builds
- {:app {:target     :browser
-        :output-dir "resources/public/js/compiled"
-        :asset-path "/js/compiled"
+ {:app {:target           :browser
+        :output-dir       "resources/public/js/compiled"
+        :asset-path       "/js/compiled"
+        ;; suppress warnings, disable it for your own code analysis
+        :compiler-options {:warnings {:undeclared-var false}}
 
         :modules
         {:main
