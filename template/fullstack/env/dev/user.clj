@@ -19,7 +19,7 @@
   (r/refresh))
 
 (defn start-server []
-  (main/-dev-main {:port 8080 :join? false}))
+  (main/-dev-main {:port 3000 :join? false}))
 
 (defn stop-server []
   (mount/stop))

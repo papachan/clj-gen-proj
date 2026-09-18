@@ -1,8 +1,8 @@
 .DS_Store
 .calva/output-window/
 .classpath
-!.clj-kondo/config.edn
 .clj-kondo/**
+!.clj-kondo/config.edn
 .cpcache
 .cljs_node_repl/
 .eastwood
@@ -12,8 +12,6 @@
 .java-version
 .lein-*
 .lsp/
-.lsp/.cache
-.lsp/sqlite*.db
 .nrepl-history
 .nrepl-port
 .portal/vs-code.edn
@@ -33,7 +31,13 @@
 /checkouts
 /classes
 /target
+resources/public/css/compiled.css
 resources/public/js
+resources/dist
 node_modules/
 .shadow-cljs
 bun.lockb
+
+# secrets
+.env
+.env.*

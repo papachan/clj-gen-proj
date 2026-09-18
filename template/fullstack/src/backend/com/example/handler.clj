@@ -1,5 +1,7 @@
 (ns com.example.handler
   (:require
+   [com.example.auth :as auth]
+   [com.example.middleware :as middleware]
    [com.example.responses :refer [response]]
    [com.example.layout :as layout]
    [malli.util :as mu]
@@ -15,8 +17,22 @@
    [reitit.ring.middleware.parameters :as parameters]
    [reitit.swagger :as swagger]
    [reitit.swagger-ui :as swagger-ui]
+   [ring.middleware.cookies :as cookies]
    [ring.middleware.cors :refer [wrap-cors]]
    [ring.util.response :as resp]))
+
+(defn- login-handler
+  [{{{:keys [username password]} :body} :parameters}]
+  (if-let [user (auth/authenticate username password)]
+    (assoc (response 200 {:success true :username (:username user)})
+           :cookies (auth/session-cookies (auth/create-token user)))
+    ;; Same message either way: do not reveal whether the username exists.
+    (response 401 {:success false :error "Invalid username or password."})))
+
+(defn- logout-handler
+  [_request]
+  (assoc (response 200 {:success true})
+         :cookies (auth/expired-cookies)))
 
 (def app
   (ring/ring-handler
@@ -44,11 +60,21 @@
        ["/users"
         {:tags #{"users endpoints"}}
         ["/login"
-         {:post {:summary "login"
-                 :responses {200 {:body [:map [:success :boolean]]}
-                             500 {:body [:map [:error :string]]}}
-                 :handler (fn [_req]
-                            (response 200 {:success true}))}}]]]]
+         {:post {:summary "Check credentials and start a session"
+                 :parameters {:body [:map
+                                     [:username [:string {:min 4}]]
+                                     [:password [:string {:min 4}]]]}
+                 :responses {200 {:body [:map
+                                         [:success :boolean]
+                                         [:username :string]]}
+                             401 {:body [:map
+                                         [:success :boolean]
+                                         [:error :string]]}}
+                 :handler login-handler}}]
+        ["/logout"
+         {:post {:summary "Expire the session cookies"
+                 :responses {200 {:body [:map [:success :boolean]]}}
+                 :handler logout-handler}}]]]]
      ["/js/*" {:no-doc true
                :handler (ring/create-resource-handler {:root "dist/js"})}]
      ["/css/*" {:no-doc true
@@ -70,7 +96,10 @@
                           ;; malli options
                           :options nil})
             :muuntaja   m/instance
-            :middleware [ ;; swagger & openapi
+            :middleware [ ;; outermost: parses request cookies and turns the
+                         ;; :cookies key of a response into Set-Cookie headers
+                         cookies/wrap-cookies
+                         ;; swagger & openapi
                          swagger/swagger-feature
                          openapi/openapi-feature
                          ;; query-params & form-params
