@@ -20,16 +20,11 @@
          :before-load com.example.app/stop
          :preloads    [day8.re-frame-10x.preload.react-18
                        devtools.preload]}
-
         :dev
         {:compiler-options {:main            com.example.app
-                            :infer-externs   auto
-                            :closure-defines {goog.DEBUG                           true
-                                              re-frame.trace.trace-enabled?        true
+                            :closure-defines {re-frame.trace.trace-enabled?        true
                                               day8.re-frame.tracing.trace-enabled? true}}}
-
         :release
         {:output-dir       "resources/dist/js/compiled"
          :build-options    {:ns-aliases {day8.re-frame.tracing day8.re-frame.tracing-stubs}}
-         :compiler-options {:optimizations :advanced
-                            :warnings {:undeclared-var false}}}}}}
+         :compiler-options {:warnings {:undeclared-var false}}}}}}
