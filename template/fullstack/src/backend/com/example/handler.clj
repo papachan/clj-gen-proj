@@ -47,7 +47,10 @@
      ["/api-docs/openapi.json"
       {:get {:no-doc true
              :basePath "/"
-             :openapi {:info {:title "com.example"
+             ;; This version of ring-swagger-ui only accepts 3.1.0
+             ;; If you want to use openapi 3.2.0 you can upgrade it to its latest version
+             :openapi {:openapi "3.1.0"
+                       :info {:title "com.example"
                               :description "openapi3 docs with [malli](https://github.com/metosin/malli) and reitit-ring"
                               :version "0.0.1"}}
              :handler (openapi/create-openapi-handler)}}]
