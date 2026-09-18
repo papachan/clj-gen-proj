@@ -25,17 +25,18 @@
       {:className "bg-gray-200 p-6"}
       [:div
        {:className "container mx-auto flex items-center justify-between gap-6"}
-       [:ul
-        {:className "flex gap-8"}
-        [nav-link {:label   "home"
-                   :route   ::webapp/home
-                   :active? (= "home" page-selected)}]
-        [nav-link {:label   "subpage 1"
-                   :route   ::webapp/subpage
-                   :active? (str/starts-with? page-selected "subpage")}]]
+       (when auth
+         [:ul
+          {:className "flex gap-8"}
+          [nav-link {:label   "home"
+                     :route   ::webapp/home
+                     :active? (= "home" page-selected)}]
+          [nav-link {:label   "subpage 1"
+                     :route   ::webapp/subpage
+                     :active? (str/starts-with? page-selected "subpage")}]])
        (if auth
          [:div
-          {:className "flex items-center gap-4"}
+          {:className "ml-auto flex items-center gap-4"}
           ;; after a page refresh only the cookie survives, so the username
           ;; may be unknown -- show it only when we have it
           (when-let [username (:username auth)]
@@ -51,7 +52,7 @@
          [:button
           {:type      "button"
            :on-click  #(re-frame/dispatch [::events/push-state {:route ::webapp/login}])
-           :className "rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"}
+           :className "ml-auto rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"}
           "Log in"])]]]))
 
 (defn container
