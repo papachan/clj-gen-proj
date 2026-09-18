@@ -5,7 +5,7 @@
   {:extra-paths ["src/backend" "resources"]
    :extra-deps {mount/mount             {:mvn/version "0.1.24"}
                 aero/aero               {:mvn/version "1.1.6"}
-                metosin/reitit          {:mvn/version "0.10.1"}
+                metosin/reitit          {:mvn/version "0.11.0"}
                 metosin/ring-swagger-ui {:mvn/version "5.17.14"}
                 metosin/malli           {:mvn/version "0.20.1"}
                 org.slf4j/slf4j-nop     {:mvn/version "2.0.9"}
@@ -14,26 +14,25 @@
                 ring-cors/ring-cors     {:mvn/version "0.1.13"}
                 hiccup/hiccup           {:mvn/version "2.0.0"}}}
 
-  ;; clojure -M:backend:dev
+  ;; clj -M:backend:dev
   :dev          {:extra-paths ["env/dev"]
                  :jvm-opts    ["-XX:-OmitStackTraceInFastThrow"]
                  :extra-deps  {org.clojure/tools.namespace {:mvn/version "1.5.0"}}}
 
   ;; nREPL server for the backend JVM, so an editor can attach to a running
-  ;; server: clojure -M:backend:dev:nrepl, then connect on 7888 and call
+  ;; server: clj -M:backend:dev:nrepl, then connect on 7888 and call
   ;; (start-server) from env/dev/user.clj.
-  ;; clj -M:backend:dev:nrepl
   :nrepl        {:extra-deps {nrepl/nrepl       {:mvn/version "1.7.0"}
                               cider/cider-nrepl {:mvn/version "0.62.2"}}
                  :main-opts  ["-m" "nrepl.cmdline"
                               "--port" "7888"
                               "--middleware" "[cider.nrepl/cider-middleware]"]}
 
-  ;; clojure -M:backend:run-m
+  ;; clj -M:backend:run-m
   :run-m        {:main-opts ["-m" "com.example.main"]}
 
   ;; Start Server
-  ;; clojure -X:backend:dev:start-server
+  ;; clj -X:backend:dev:start-server
   :start-server {:ns-default com.example.main
                  :exec-fn    -dev-main
                  :exec-args  {:port  3000
@@ -43,8 +42,8 @@
    :extra-deps
    {org.clojure/clojurescript {:mvn/version "1.12.145"}
     reagent/reagent           {:mvn/version "2.0.1"}
-    metosin/reitit-frontend   {:mvn/version "0.10.1"}
-    metosin/reitit-malli      {:mvn/version "0.10.1"}
+    metosin/reitit-frontend   {:mvn/version "0.11.0"}
+    metosin/reitit-malli      {:mvn/version "0.11.0"}
     re-frame/re-frame         {:mvn/version "1.4.7"}
     day8.re-frame/http-fx     {:mvn/version "0.2.4"}}}
 
