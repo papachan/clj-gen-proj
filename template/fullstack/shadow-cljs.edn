@@ -30,4 +30,6 @@
 
         :release
         {:output-dir       "resources/dist/js/compiled"
-         :compiler-options {:optimizations :advanced}}}}}
+         :build-options    {:ns-aliases {day8.re-frame.tracing day8.re-frame.tracing-stubs}}
+         :compiler-options {:optimizations :advanced
+                            :warnings {:undeclared-var false}}}}}}
