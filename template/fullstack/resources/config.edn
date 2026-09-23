@@ -1,1 +1,13 @@
-{:app {}}
+{:app
+ {:auth
+  {;; HS256 signing key for session tokens.
+   :jwt-secret #or [#env JWT_SECRET "dev-only-insecure-secret"]
+   ;; Set to true once the app is served over HTTPS. Left false here because a
+   ;; Secure cookie is silently dropped by the browser over plain http://.
+   :secure-cookies? false
+   ;; Lifetime of a session, in seconds (24h).
+   :session-ttl-seconds 86400
+   ;; Dev-only user store, read straight out of this file. Replace with a
+   ;; database lookup before exposing this to anyone.
+   :users {"admin" {:username "admin"
+                    :password-hash "encrypt-something-here"}}}}}
