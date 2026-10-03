@@ -17,7 +17,7 @@
   ;; clj -M:backend:dev
   :dev          {:extra-paths ["env/dev"]
                  :jvm-opts    ["-XX:-OmitStackTraceInFastThrow"]
-                 :extra-deps  {org.clojure/tools.namespace {:mvn/version "1.5.0"}}}
+                 :extra-deps  {org.clojure/tools.namespace {:mvn/version "1.5.1"}}}
 
   ;; nREPL server for the backend JVM, so an editor can attach to a running
   ;; server: clj -M:backend:dev:nrepl, then connect on 7888 and call

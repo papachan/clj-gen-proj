@@ -13,7 +13,7 @@
          integrant/integrant         {:mvn/version "0.13.1"}}
  :aliases
  {:dev          {:extra-paths ["env/dev"]
-                 :extra-deps  {org.clojure/tools.namespace {:mvn/version "1.5.0"}
+                 :extra-deps  {org.clojure/tools.namespace {:mvn/version "1.5.1"}
                                integrant/repl              {:mvn/version "0.4.0"}}}
   :test         {:extra-paths ["test"]
                  :extra-deps  {lambdaisland/kaocha {:mvn/version "1.91.1392"}}

@@ -13,7 +13,7 @@ This babashka script parse any template from template directory, after cloning t
 | shadow-uix-app | shadow-cljs + UIx (React hooks) + Tailwind |
 | fulcro-app | Fulcro 3 client + fulcro-inspect |
 | clojurescript-quil-app | shadow-cljs + Quil sketch |
-| library | tools.build + deps-deploy + codox + test-runner |
+| library-app | tools.build + deps-deploy + quickdoc + test-runner |
 | clojurescript-quil-app | shadow-cljs with quil sketch |
 
 You can just run the script by using:

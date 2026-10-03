@@ -1,0 +1,10 @@
+#kaocha/v1 {:capture-output?   true
+            :kaocha/fail-fast? false
+            :plugins           [:kaocha.plugin/profiling
+                                              :kaocha.plugin/print-invocations
+                                              :preloads]
+            :tests             [{:id                  :unit
+                                 :kaocha/fail-fast?   false
+                                 :kaocha/source-paths ["src"]
+                                 :kaocha/test-paths   ["test"]
+                                 :ns-patterns         [".*"]}]}
