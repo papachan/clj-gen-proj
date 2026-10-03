@@ -31,8 +31,8 @@ Deploy the artefact to clojars -- needs `CLOJARS_USERNAME` and `CLOJARS_PASSWORD
 
 # Deploy notes for clojars
 
-1. Update the version of the maven package in pom.xml - and git commit it.
-2. Build the jar via `make`
+1. Update the version from the build.clj file and generate a new pom.xml - git commit it.
+2. Generate a new jar clojure -X:deploy
 3. CLOJARS_USERNAME='username' CLOJARS_PASSWORD='deploy_token' clojure -X:deploy
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) and the [CHANGELOG](CHANGELOG.md).
