@@ -6,7 +6,7 @@
 (deftest swagger-test
   (testing "GET /swagger.json returns 200"
     (let [response (app {:request-method :get
-                         :uri            "/swagger.json"})]
+                         :uri            "/api-docs/swagger.json"})]
       (is (= 200 (:status response))))))
 
 (deftest login-route-test

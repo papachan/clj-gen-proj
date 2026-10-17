@@ -1,12 +1,11 @@
 {:paths ["src" "resources"]
  :deps  {org.clojure/clojure     {:mvn/version "1.12.5"}
-         mount/mount             {:mvn/version "0.1.21"}
+         mount/mount             {:mvn/version "0.1.24"}
          aero/aero               {:mvn/version "1.1.6"}
-         metosin/reitit          {:mvn/version "0.7.2"}
+         metosin/reitit          {:mvn/version "0.11.0"}
          org.slf4j/slf4j-nop     {:mvn/version "2.0.9"}
-         ring/ring               {:mvn/version "1.14.1"}
-         ring/ring-json          {:mvn/version "0.5.1"}
-         ring/ring-jetty-adapter {:mvn/version "1.14.1"}}
+         ring/ring               {:mvn/version "1.15.5"}
+         ring/ring-jetty-adapter {:mvn/version "1.15.5"}}
  :aliases
  {:dev          {:extra-paths ["env/dev"]
                  :extra-deps  {org.clojure/tools.namespace {:mvn/version "1.5.1"}}}

@@ -39,17 +39,17 @@
    (ring/router
     [["/api-docs/swagger.json"
       {:get {:no-doc true
-             :basePath "/"
-             :swagger {:info {:title "com.example"
+             :swagger {:basePath "/"
+                       :info {:title "com.example"
                               :description "swagger docs with [malli](https://github.com/metosin/malli) and reitit-ring"
                               :version "0.0.1"}}
              :handler (swagger/create-swagger-handler)}}]
      ["/api-docs/openapi.json"
       {:get {:no-doc true
-             :basePath "/"
              ;; This version of ring-swagger-ui only accepts 3.1.0
              ;; If you want to use openapi 3.2.0 you can upgrade it to its latest version
              :openapi {:openapi "3.1.0"
+                       :basePath "/"
                        :info {:title "com.example"
                               :description "openapi3 docs with [malli](https://github.com/metosin/malli) and reitit-ring"
                               :version "0.0.1"}}
