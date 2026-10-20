@@ -1,4 +1,4 @@
-{:deps {:aliases [:frontend]}
+{:deps {:aliases [:shadow-cljs :dev]}
 
  :dev-http {8080 "public"}
 
