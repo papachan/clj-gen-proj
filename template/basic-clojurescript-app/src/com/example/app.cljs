@@ -1,7 +1,6 @@
 (ns com.example.app
   (:require
-   [reagent.dom.client :as rdomc]
-   [reagent.core :as r]))
+   [reagent.dom.client :as rdomc]))
 
 (defonce root (delay (rdomc/create-root (js/document.getElementById "app"))))
 

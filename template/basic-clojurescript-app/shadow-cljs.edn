@@ -2,7 +2,8 @@
 
  :dev-http {8080 "public"}
 
- :nrepl {:port 8777}
+ :nrepl {:port 8777
+         :middleware [cider.piggieback/wrap-cljs-repl]}
 
  :builds
  {:app {:target     :browser
