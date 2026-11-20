@@ -1,4 +1,4 @@
-{:deps {org.clojure/clojure {:mvn/version "1.12.5"}}
+{:deps {org.clojure/clojure {:mvn/version "1.12.7"}}
 
  :aliases
  {:backend

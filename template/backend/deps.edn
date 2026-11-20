@@ -1,5 +1,5 @@
 {:paths ["src" "resources"]
- :deps  {org.clojure/clojure     {:mvn/version "1.12.5"}
+ :deps  {org.clojure/clojure     {:mvn/version "1.12.7"}
          mount/mount             {:mvn/version "0.1.24"}
          aero/aero               {:mvn/version "1.1.6"}
          metosin/reitit          {:mvn/version "0.11.0"}

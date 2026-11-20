@@ -1,5 +1,5 @@
 {:paths   ["src"]
- :deps    {org.clojure/clojure       {:mvn/version "1.12.5"}
+ :deps    {org.clojure/clojure       {:mvn/version "1.12.7"}
            org.clojure/clojurescript {:mvn/version "1.12.145"}
            com.pitch/uix.core        {:mvn/version "1.4.8"}
            com.pitch/uix.dom         {:mvn/version "1.4.8"}}
